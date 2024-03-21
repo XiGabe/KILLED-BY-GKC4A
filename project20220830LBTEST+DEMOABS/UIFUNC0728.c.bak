@@ -1,0 +1,1382 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "NUC1xx.h"
+#include "Driver\DrvGPIO.h"
+#include "Driver\DrvSYS.h"
+#include "Driver\DrvSPI.h"
+#include "Driver\DrvTIMER.h"
+
+#define KEYTMR_OF  100
+
+unsigned int mode=0;
+unsigned int modechangeflag=0;
+unsigned int mode1_freq1=100;	 //KHz
+unsigned int mode1_freq2=100;	 //KHz
+
+
+unsigned int mode2_freq=100;	 //KHz
+unsigned int mode2_phasediff=8;	 //multiplied by 11.25degree
+
+
+unsigned int mode3_freq=100;	 //KHz
+int mode3_phase1=0;
+int mode3_phase2=8;
+unsigned int mode3_status=1;	 //0 PLL Locked ; 1 PLL unLocked
+
+
+
+unsigned char stringdegree_00[]="0°     ";
+unsigned char stringdegree_01[]="11.25° ";
+unsigned char stringdegree_02[]="22.5°  ";
+unsigned char stringdegree_03[]="33.75° ";
+unsigned char stringdegree_04[]="45°    ";
+unsigned char stringdegree_05[]="56.25° ";
+unsigned char stringdegree_06[]="67.5°  ";
+unsigned char stringdegree_07[]="78.75° ";
+unsigned char stringdegree_08[]="90°    ";
+unsigned char stringdegree_09[]="101.25°";
+unsigned char stringdegree_10[]="112.5° ";
+unsigned char stringdegree_11[]="123.75°";
+unsigned char stringdegree_12[]="135°   ";
+unsigned char stringdegree_13[]="146.25°";
+unsigned char stringdegree_14[]="157.5° ";
+unsigned char stringdegree_15[]="168.75°";
+unsigned char stringdegree_16[]="180°   ";
+unsigned char stringdegree_17[]="191.25°";
+unsigned char stringdegree_18[]="202.5° ";
+unsigned char stringdegree_19[]="213.75°";
+unsigned char stringdegree_20[]="225°   ";
+unsigned char stringdegree_21[]="236.25°";
+unsigned char stringdegree_22[]="247.5° ";
+unsigned char stringdegree_23[]="258.75°";
+unsigned char stringdegree_24[]="270°   ";
+unsigned char stringdegree_25[]="281.25°";
+unsigned char stringdegree_26[]="292.5° ";
+unsigned char stringdegree_27[]="303.75°";
+unsigned char stringdegree_28[]="315°   ";
+unsigned char stringdegree_29[]="326.25°";
+unsigned char stringdegree_30[]="337.5° ";
+unsigned char stringdegree_31[]="348.75°";
+
+unsigned char stringstatue_locked[]="锁相稳定  ";
+unsigned char stringstatue_unlocked[]="锁相调整中";
+
+
+
+
+
+struct struct_act
+{
+	unsigned char num;
+	unsigned char *str[20];
+	unsigned char x[20],y[20],inverse[20];
+} a0,a1,a2,a3,a4,a5,a6,a7;
+
+struct struct_act *act[8];
+
+
+unsigned char a0_s0[]="0", a0_s1[]="欢迎", a0_s2[]="按任意键进入";
+unsigned char a1_s0[]="请选择工作模式",a1_s1[]="双路独立信号源",a1_s2[]="相差可调信号源",a1_s3[]="Costas环载波提取";
+unsigned char a2_s0[]="双路独立信号源",a2_s1[]="[1]",a2_s2[]="KHz",a2_s3[]="[2]",a2_s4[]="KHz",a2_s5[]="运行",a2_s6[]="返回",a2_s7[]="1",a2_s8[]="0",a2_s9[]="0",a2_s10[]="0",a2_s11[]="8",a2_s12[]="3";
+unsigned char a3_s0[]="双路独立信号源",a3_s1[]="[1]",a3_s2[]="KHz",a3_s3[]="[2]",a3_s4[]="KHz",a3_s5[]="正在运行",a3_s6[]="返回",a3_s7[]="1",a3_s8[]="0",a3_s9[]="0",a3_s10[]="0",a3_s11[]="8",a3_s12[]="3";
+unsigned char a4_s0[]="相差可调信号源",a4_s1[]="频率",a4_s2[]="KHz",a4_s3[]="相差",a4_s4[]="运行",a4_s5[]="退回",a4_s6[]="1",a4_s7[]="0",a4_s8[]="0";
+unsigned char *a4_s9;
+unsigned char a5_s0[]="相差可调信号源",a5_s1[]="频率",a5_s2[]="KHz",a5_s3[]="相差",a5_s4[]="正在运行",a5_s5[]="退出",a5_s6[]="1",a5_s7[]="0",a5_s8[]="0",a5_s9[]="191.25°";
+unsigned char a6_s0[]="Costas环载波提取",a6_s1[]="载频",a6_s2[]="KHz",a6_s3[]="运行",a6_s4[]="退回",a6_s5[]="1",a6_s6[]="0",a6_s7[]="0";
+unsigned char a7_s0[]="Costas环载波提取",a7_s1[]="载频",a7_s2[]="KHz",a7_s3[]="退出",a7_s4[]="1",a7_s5[]="0",a7_s6[]="0";
+unsigned char *a7_s7;
+
+
+
+unsigned int ui_state=0;  //状态号
+
+unsigned int key_ENTER_state=0;
+unsigned int key_ENTER_prestate=0;
+unsigned int ENTER_key_timer=0;
+unsigned int key_ENTER_flag=0; 
+
+
+unsigned int key_DOWN_state=0;
+unsigned int key_DOWN_prestate=0;
+unsigned int key_DOWN_timer=0;
+unsigned int key_DOWN_flag=0; 
+
+
+unsigned int key_UP_state=0;
+unsigned int key_UP_prestate=0;
+unsigned int key_UP_timer=0;
+unsigned int key_UP_flag=0; 
+
+
+unsigned int key_INCREASE_state=0;
+unsigned int key_INCREASE_prestate=0;
+unsigned int key_INCREASE_timer=0;
+unsigned int key_INCREASE_flag=0; 
+int degree_counter=8;
+
+unsigned int key_DECREASE_state=0;
+unsigned int key_DECREASE_prestate=0;
+unsigned int key_DECREASE_timer=0;
+unsigned int key_DECREASE_flag=0; 
+
+unsigned int key_state=0;
+unsigned int key_prestate=0;unsigned int state=0;
+unsigned int key_timer=0;
+unsigned int key_flag=0; 
+unsigned char istr1[]="1234  ";
+
+
+
+
+
+
+//unsigned char mode1_freq1_char[3]="200",mode1_freq2_char[3]="200",mode2_freq_char[3]="200",mode3_freq_char[3]="200";
+
+
+void itodegree(unsigned int phasediff, unsigned char **instrde)
+{
+
+		switch (phasediff)
+		{
+			case 0: *instrde = stringdegree_00;break;
+			case 1: *instrde = stringdegree_01;break;
+			case 2: *instrde = stringdegree_02;break;
+			case 3: *instrde = stringdegree_03;break;
+			case 4: *instrde = stringdegree_04;break;
+			case 5: *instrde = stringdegree_05;break;
+			case 6: *instrde = stringdegree_06;break;
+			case 7: *instrde = stringdegree_07;break; 
+			case 8: *instrde = stringdegree_08;break;
+			case 9: *instrde = stringdegree_09;break;
+			case 10: *instrde = stringdegree_10;break;
+			case 11: *instrde = stringdegree_11;break;
+			case 12: *instrde = stringdegree_12;break;
+			case 13: *instrde = stringdegree_13;break;
+			case 14: *instrde = stringdegree_14;break;
+			case 15: *instrde = stringdegree_15;break;
+			case 16: *instrde = stringdegree_16;break;
+			case 17: *instrde = stringdegree_17;break;
+			case 18: *instrde = stringdegree_18;break;
+			case 19: *instrde = stringdegree_19;break;
+			case 20: *instrde = stringdegree_20;break;
+			case 21: *instrde = stringdegree_21;break;
+			case 22: *instrde = stringdegree_22;break;
+			case 23: *instrde = stringdegree_23;break;
+			case 24: *instrde = stringdegree_24;break;
+			case 25: *instrde = stringdegree_25;break;
+			case 26: *instrde = stringdegree_26;break;
+			case 27: *instrde = stringdegree_27;break;
+			case 28: *instrde = stringdegree_28;break;
+			case 29: *instrde = stringdegree_29;break;
+			case 30: *instrde = stringdegree_30;break;
+			case 31: *instrde = stringdegree_31;break;  
+			
+			default: break;	 
+		}  
+}
+
+void itostatus (unsigned int status, unsigned char **instrstatus)
+{
+	switch (status)
+	{
+		case 0: *instrstatus = stringstatue_locked;break;
+		case 1: *instrstatus = stringstatue_unlocked;break;
+
+		default: break;
+	}
+}
+
+
+void itoafreq(unsigned int i, unsigned char* istr1,unsigned char* istr2,unsigned char* istr3)
+{
+	unsigned int j;
+	j=i/100;
+	istr1[0]='0'+j;istr1[1]='\0';
+	i=i-j*100;
+	j=i/10;
+	istr2[0]='0'+j;istr2[1]='\0';
+	i=i-j*10;
+	istr3[0]='0'+i;istr3[1]='\0';
+}
+
+
+unsigned int atoifreq(unsigned char* istr1,unsigned char* istr2,unsigned char* istr3)
+{	 
+	unsigned int a,b,c,i;	  
+	a=istr1[0]-'0';b=istr2[0]-'0';c=istr3[0]-'0';
+	i = a*100+b*10+c;
+	return i;
+}
+
+
+//  I/O端口初始化
+void button_Port_Init(void)
+{
+		DrvGPIO_Open(E_GPC, 1, E_IO_QUASI);			  // GPC1	 ENTER
+		DrvGPIO_Open(E_GPC, 2, E_IO_QUASI);			  // GPC2	 DOWN
+		DrvGPIO_Open(E_GPC, 3, E_IO_QUASI);			  // GPC3	 UP
+		DrvGPIO_Open(E_GPC, 4, E_IO_QUASI);			  // GPC4	 INCREASE
+		DrvGPIO_Open(E_GPC, 5, E_IO_QUASI);			  // GPC5	 DECREASE		
+
+}
+
+
+//按钮按下检测
+void ENTER_detect(void)
+{
+	if (DrvGPIO_GetBit(E_GPC,1) == 0) ///////////////////	 ENTER
+	{
+		key_ENTER_prestate=key_ENTER_state;		
+		key_ENTER_state=0;
+		if (key_ENTER_prestate==1) 	key_ENTER_flag=1;
+	}
+	else
+	{
+		key_ENTER_prestate = key_ENTER_state; 
+		key_ENTER_state=1;	
+	}
+}
+
+void DOWN_detect(void)
+{
+	if (DrvGPIO_GetBit(E_GPC,2) == 0) ///////////////////	 DOWN
+	{
+		key_DOWN_prestate=key_DOWN_state;		
+		key_DOWN_state=0;
+		if (key_DOWN_prestate==1) key_DOWN_flag=1;
+		
+	}
+	else
+	{
+		key_DOWN_prestate = key_DOWN_state; 
+		key_DOWN_state=1;	
+	}
+
+}
+
+void UP_detect(void)
+{
+	if (DrvGPIO_GetBit(E_GPC,3) == 0) ///////////////////	 UP
+	{
+		key_UP_prestate=key_UP_state;		
+		key_UP_state=0;
+		if (key_UP_prestate==1)  key_UP_flag=1;
+	}
+	else
+	{
+		key_UP_prestate = key_UP_state; 
+		key_UP_state=1;	
+	}
+}
+
+void INCREASE_detect(void)
+{
+	if (DrvGPIO_GetBit(E_GPC,4) == 0) ///////////////////	 INCREASE	
+	{
+		key_INCREASE_prestate=key_INCREASE_state;		
+		key_INCREASE_state=0;
+		if (key_INCREASE_prestate==1) 
+		{	key_INCREASE_flag=1;	key_INCREASE_timer =0;	}
+		else if (key_INCREASE_prestate==0)
+		{
+			if 	(++key_INCREASE_timer>=KEYTMR_OF)
+			{ key_INCREASE_flag=1; key_INCREASE_timer=0;}  
+		}
+	}
+	else
+	{
+		key_INCREASE_prestate = key_INCREASE_state; 
+		key_INCREASE_state=1;
+		key_INCREASE_timer=0;	
+	}
+}
+
+void DECREASE_detect(void)
+{
+	if (DrvGPIO_GetBit(E_GPC,5) == 0) ///////////////////	 DECREASE	
+	{
+		key_DECREASE_prestate=key_DECREASE_state;		
+		key_DECREASE_state=0;
+		if (key_DECREASE_prestate==1) 
+		{	key_DECREASE_flag=1;	key_DECREASE_timer =0;	}
+		else if (key_DECREASE_prestate==0)
+		{
+			if 	(++key_DECREASE_timer>=KEYTMR_OF)
+			{ key_DECREASE_flag=1; key_DECREASE_timer=0;}  
+		}
+	}
+	else
+	{
+		key_DECREASE_prestate = key_DECREASE_state; 
+		key_DECREASE_state=1;
+		key_DECREASE_timer=0;	
+	}
+}
+
+
+void display_ui_act(unsigned int i)
+{		
+	unsigned int j=0;
+	clear_screen();
+	for (j=0;j<act[i]->num;j++) 
+	{
+		Show_Word(act[i]->x[j],(act[i]->y[j]-1)*8+1,*(act[i]->str[j]),act[i]->inverse[j]);		
+	
+	}
+	
+}
+
+
+
+void init_act(void)
+{
+
+	itoafreq(mode1_freq1,a2_s7,a2_s8,a2_s9);
+	itoafreq(mode1_freq2, a2_s10,a2_s11,a2_s12);
+	itoafreq(mode2_freq, a4_s6,a4_s7,a4_s8);
+	itoafreq(mode3_freq, a6_s5,a6_s6,a6_s7);
+	itodegree(mode2_phasediff,&a4_s9); 
+	itostatus(mode3_status,&a7_s7);
+
+
+
+	a0.num=3;
+	a0.str[0]=a0_s0; a0.x[0]=1;  a0.y[0]=1;  a0.inverse[0]=0; 
+	a0.str[1]=a0_s1; a0.x[1]=3;  a0.y[1]=1;  a0.inverse[1]=0;
+	a0.str[2]=a0_s2; a0.x[2]=5;  a0.y[2]=1;  a0.inverse[2]=0;						  ///////act0
+	act[0]=&a0;
+
+
+	a1.num=4;
+	a1.str[0]=a1_s0;	a1.x[0]=1;	a1.y[0]=1;	a1.inverse[0]=0;
+	a1.str[1]=a1_s1;	a1.x[1]=3;	a1.y[1]=1;	a1.inverse[1]=0;
+	a1.str[2]=a1_s2;	a1.x[2]=5;	a1.y[2]=1;	a1.inverse[0]=0;
+	a1.str[3]=a1_s3;	a1.x[3]=7;	a1.y[3]=1;	a1.inverse[3]=0;					  ///////act1
+	act[1]=&a1;
+
+
+	a2.num=13;	
+	a2.str[0]=a2_s0;	a2.x[0]=1;	a2.y[0]=1;	a2.inverse[0]=0;
+	a2.str[1]=a2_s1;	a2.x[1]=3;	a2.y[1]=1;	a2.inverse[1]=0;	
+	a2.str[2]=a2_s2;	a2.x[2]=3;	a2.y[2]=7;	a2.inverse[2]=0;
+	a2.str[3]=a2_s3;	a2.x[3]=5;	a2.y[3]=1;	a2.inverse[3]=0;
+	a2.str[4]=a2_s4;	a2.x[4]=5;	a2.y[4]=7;	a2.inverse[4]=0;
+	a2.str[5]=a2_s5;	a2.x[5]=7;	a2.y[5]=1;	a2.inverse[5]=0;
+	a2.str[6]=a2_s6;	a2.x[6]=7;	a2.y[6]=13;	a2.inverse[6]=0;
+	a2.str[7]= a2_s7;	a2.x[7]=3;	a2.y[7]=4;	a2.inverse[7]=0;
+	a2.str[8]= a2_s8;	a2.x[8]=3;	a2.y[8]=5;	a2.inverse[8]=0;
+	a2.str[9]= a2_s9;	a2.x[9]=3;	a2.y[9]=6;	a2.inverse[9]=0;
+	a2.str[10]= a2_s10;	a2.x[10]=5;	a2.y[10]=4;	a2.inverse[10]=0;
+	a2.str[11]= a2_s11;	a2.x[11]=5;	a2.y[11]=5;	a2.inverse[11]=0;
+	a2.str[12]= a2_s12;	a2.x[12]=5;	a2.y[12]=6;	a2.inverse[12]=0;           	/////act=2
+	act[2]=&a2;
+
+
+
+	a3.num=13;	
+	a3.str[0]=a3_s0;	a3.x[0]=1;	a3.y[0]=1;	a3.inverse[0]=0;
+	a3.str[1]=a3_s1;	a3.x[1]=3;	a3.y[1]=1;	a3.inverse[1]=0;	
+	a3.str[2]=a3_s2;	a3.x[2]=3;	a3.y[2]=7;	a3.inverse[2]=0;
+	a3.str[3]=a3_s3;	a3.x[3]=5;	a3.y[3]=1;	a3.inverse[3]=0;
+	a3.str[4]=a3_s4;	a3.x[4]=5;	a3.y[4]=7;	a3.inverse[4]=0;
+	a3.str[5]=a3_s5;	a3.x[5]=7;	a3.y[5]=1;	a3.inverse[5]=0;
+	a3.str[6]=a3_s6;	a3.x[6]=7;	a3.y[6]=13;	a3.inverse[6]=0;
+	a3.str[7]=a3_s7;	a3.x[7]=3;	a3.y[7]=4;	a3.inverse[7]=0;
+	a3.str[8]=a3_s8;	a3.x[8]=3;	a3.y[8]=5;	a3.inverse[8]=0;
+	a3.str[9]=a3_s9;	a3.x[9]=3;	a3.y[9]=6;	a3.inverse[9]=0;
+	a3.str[10]=a3_s10;	a3.x[10]=5;	a3.y[10]=4;	a3.inverse[10]=0;
+	a3.str[11]=a3_s11;	a3.x[11]=5;	a3.y[11]=5;	a3.inverse[11]=0;
+	a3.str[12]=a3_s12;	a3.x[12]=5;	a3.y[12]=6;	a3.inverse[12]=0;           	/////act=3
+	act[3]=&a3;
+
+
+
+	
+
+	a4.num=10;	
+	a4.str[0]=a4_s0;	a4.x[0]=1;	a4.y[0]=1;	a4.inverse[0]=0;
+	a4.str[1]=a4_s1;	a4.x[1]=3;	a4.y[1]=1;	a4.inverse[1]=0;	
+	a4.str[2]=a4_s2;	a4.x[2]=3;	a4.y[2]=9;	a4.inverse[2]=0;
+	a4.str[3]=a4_s3;	a4.x[3]=5;	a4.y[3]=1;	a4.inverse[3]=0;
+	a4.str[4]=a4_s4;	a4.x[4]=7;	a4.y[4]=1;	a4.inverse[4]=0;
+	a4.str[5]=a4_s5;	a4.x[5]=7;	a4.y[5]=13;	a4.inverse[5]=0;
+	a4.str[6]=a4_s6;	a4.x[6]=3;	a4.y[6]=6;	a4.inverse[6]=0;
+	a4.str[7]=a4_s7;	a4.x[7]=3;	a4.y[7]=7;	a4.inverse[7]=0;
+	a4.str[8]=a4_s8;	a4.x[8]=3;	a4.y[8]=8;	a4.inverse[8]=0;
+	a4.str[9]=a4_s9;	a4.x[9]=5;	a4.y[9]=6;	a4.inverse[9]=0;	/////act=4
+	act[4]=&a4;
+
+
+
+	a5.num=10;	
+	a5.str[0]=a5_s0;	a5.x[0]=1;	a5.y[0]=1;	a5.inverse[0]=0;
+	a5.str[1]=a5_s1;	a5.x[1]=3;	a5.y[1]=1;	a5.inverse[1]=0;	
+	a5.str[2]=a5_s2;	a5.x[2]=3;	a5.y[2]=9;	a5.inverse[0]=0;
+	a5.str[3]=a5_s3;	a5.x[3]=5;	a5.y[3]=1;	a5.inverse[3]=0;
+	a5.str[4]=a5_s4;	a5.x[4]=7;	a5.y[4]=1;	a5.inverse[4]=0;
+	a5.str[5]=a5_s5;	a5.x[5]=7;	a5.y[5]=13;	a5.inverse[5]=0;
+	a5.str[6]=a5_s6;	a5.x[6]=3;	a5.y[6]=6;	a5.inverse[6]=0;
+	a5.str[7]=a5_s7;	a5.x[7]=3;	a5.y[7]=7;	a5.inverse[7]=0;
+	a5.str[8]=a5_s8;	a5.x[8]=3;	a5.y[8]=8;	a5.inverse[8]=0;
+	a5.str[9]=a5_s9;	a5.x[9]=5;	a5.y[9]=6;	a5.inverse[9]=0;		/////act=5
+	act[5]=&a5;
+
+
+	a6.num=8;	
+	a6.str[0]=a6_s0;	a6.x[0]=1;	a6.y[0]=1;	a6.inverse[0]=0;
+	a6.str[1]=a6_s1;	a6.x[1]=3;	a6.y[1]=1;	a6.inverse[1]=0;
+	a6.str[2]=a6_s2;	a6.x[2]=3;	a6.y[2]=9;	a6.inverse[2]=0;
+	a6.str[3]=a6_s3;	a6.x[3]=7;	a6.y[3]=1;	a6.inverse[3]=0;
+	a6.str[4]=a6_s4;	a6.x[4]=7;	a6.y[4]=13;	a6.inverse[4]=0;
+	a6.str[5]=a6_s5;	a6.x[5]=3;	a6.y[5]=6;	a6.inverse[5]=0;
+	a6.str[6]=a6_s6;	a6.x[6]=3;	a6.y[6]=7;	a6.inverse[6]=0;
+	a6.str[7]=a6_s7;	a6.x[7]=3;	a6.y[7]=8;	a6.inverse[7]=0;			  ////act=6
+	act[6]=&a6;
+
+
+	a7.num=8;	
+	a7.str[0]=a7_s0;	a7.x[0]=1;	a7.y[0]=1;	a7.inverse[0]=0;
+	a7.str[1]=a7_s1;	a7.x[1]=3;	a7.y[1]=1;	a7.inverse[1]=0;
+	a7.str[2]=a7_s2;	a7.x[2]=3;	a7.y[2]=9;	a7.inverse[2]=0;
+	a7.str[3]=a7_s3;	a7.x[3]=7;	a7.y[3]=13;	a7.inverse[3]=0;
+	a7.str[4]=a7_s4;	a7.x[4]=3;	a7.y[4]=6;	a7.inverse[4]=0;
+	a7.str[5]=a7_s5;	a7.x[5]=3;	a7.y[5]=7;	a7.inverse[5]=0;
+	a7.str[6]=a7_s6;	a7.x[6]=3;	a7.y[6]=8;	a7.inverse[6]=0;
+	a7.str[7]=a7_s7;	a7.x[7]=5;	a7.y[7]=1;	a7.inverse[7]=0;			  ////act=7
+	act[7]=&a7;
+	
+
+	display_ui_act(0);
+}
+
+
+
+void ui_proc0(void)
+{
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+		act[1]->inverse[1]=1; display_ui_act(1);
+		ui_state=101;
+	}
+}
+
+void ui_proc101(void)
+{
+	if(key_UP_flag)
+	{
+		act[1]->inverse[1]=0; Show_Word(act[1]->x[1],(act[1]->y[1]-1)*8+1,*(act[1]->str[1]),act[1]->inverse[1]);
+		act[1]->inverse[3]=1; Show_Word(act[1]->x[3],(act[1]->y[3]-1)*8+1,*(act[1]->str[3]),act[1]->inverse[3]);
+		ui_state=103;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[1]->inverse[1]=0; Show_Word(act[1]->x[1],(act[1]->y[1]-1)*8+1,*(act[1]->str[1]),act[1]->inverse[1]);
+		act[1]->inverse[2]=1; Show_Word(act[1]->x[2],(act[1]->y[2]-1)*8+1,*(act[1]->str[2]),act[1]->inverse[2]);
+		ui_state=102;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[1]->inverse[1]=0;
+		act[2]->inverse[7]=1; display_ui_act(2);
+		ui_state=207;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void ui_proc102(void)
+{
+	if(key_UP_flag)
+	{
+		act[1]->inverse[2]=0; Show_Word(act[1]->x[2],(act[1]->y[2]-1)*8+1,*(act[1]->str[2]),act[1]->inverse[2]);
+		act[1]->inverse[1]=1; Show_Word(act[1]->x[1],(act[1]->y[1]-1)*8+1,*(act[1]->str[1]),act[1]->inverse[1]);
+		ui_state=101;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[1]->inverse[2]=0; Show_Word(act[1]->x[2],(act[1]->y[2]-1)*8+1,*(act[1]->str[2]),act[1]->inverse[2]);
+		act[1]->inverse[3]=1; Show_Word(act[1]->x[3],(act[1]->y[3]-1)*8+1,*(act[1]->str[3]),act[1]->inverse[3]);
+		ui_state=103;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[1]->inverse[2]=0;
+		itodegree(mode2_phasediff,&a4_s9);a4.str[9]=a4_s9;
+		degree_counter=mode2_phasediff;
+		act[4]->inverse[6]=1; display_ui_act(4);
+		ui_state=406;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void ui_proc103(void)
+{
+	if(key_UP_flag)
+	{
+		act[1]->inverse[3]=0; Show_Word(act[1]->x[3],(act[1]->y[3]-1)*8+1,*(act[1]->str[3]),act[1]->inverse[3]);
+		act[1]->inverse[2]=1; Show_Word(act[1]->x[2],(act[1]->y[2]-1)*8+1,*(act[1]->str[2]),act[1]->inverse[2]);
+		ui_state=102;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[1]->inverse[3]=0; Show_Word(act[1]->x[3],(act[1]->y[3]-1)*8+1,*(act[1]->str[3]),act[1]->inverse[3]);
+		act[1]->inverse[1]=1; Show_Word(act[1]->x[1],(act[1]->y[1]-1)*8+1,*(act[1]->str[1]),act[1]->inverse[1]);
+		ui_state=101;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[1]->inverse[3]=0;
+		act[6]->inverse[5]=1; display_ui_act(6);
+		ui_state=605;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void ui_proc205(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[5]=0; Show_Word(act[2]->x[5],(act[2]->y[5]-1)*8+1,*(act[2]->str[5]),act[2]->inverse[5]);
+		act[2]->inverse[12]=1; Show_Word(act[2]->x[12],(act[2]->y[12]-1)*8+1,*(act[2]->str[12]),act[2]->inverse[12]);
+		ui_state=212;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[5]=0; Show_Word(act[2]->x[5],(act[2]->y[5]-1)*8+1,*(act[2]->str[5]),act[2]->inverse[5]);
+		act[2]->inverse[6]=1; Show_Word(act[2]->x[6],(act[2]->y[6]-1)*8+1,*(act[2]->str[6]),act[2]->inverse[6]);
+		ui_state=206;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[2]->inverse[5]=0;
+		act[3]->inverse[6]=1; 
+		act[3]->str[7]=act[2]->str[7];act[3]->str[8]=act[2]->str[8];act[3]->str[9]=act[2]->str[9];
+		act[3]->str[10]=act[2]->str[10];act[3]->str[11]=act[2]->str[11];act[3]->str[12]=act[2]->str[12];
+		mode1_freq1 = atoifreq(act[2]->str[7],act[2]->str[8],act[2]->str[9]);
+		mode1_freq2 = atoifreq(act[2]->str[10],act[2]->str[11],act[2]->str[12]);
+		mode =1;modechangeflag=1;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		display_ui_act(3);
+		ui_state=306;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc206(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[6]=0; Show_Word(act[2]->x[6],(act[2]->y[6]-1)*8+1,*(act[2]->str[6]),act[2]->inverse[6]);
+		act[2]->inverse[5]=1; Show_Word(act[2]->x[5],(act[2]->y[5]-1)*8+1,*(act[2]->str[5]),act[2]->inverse[5]);
+		ui_state=205;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[6]=0; Show_Word(act[2]->x[6],(act[2]->y[6]-1)*8+1,*(act[2]->str[6]),act[2]->inverse[6]);
+		act[2]->inverse[7]=1; Show_Word(act[2]->x[7],(act[2]->y[7]-1)*8+1,*(act[2]->str[7]),act[2]->inverse[7]);
+		ui_state=207;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[2]->inverse[6]=0;
+		act[1]->inverse[1]=1; display_ui_act(1);
+		itoafreq(mode1_freq1,a2_s7,a2_s8,a2_s9);
+		itoafreq(mode1_freq2, a2_s10,a2_s11,a2_s12);
+		mode=0;
+		ui_state=101;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void in_de (unsigned int w, unsigned char* actstring )		//w=1 : increase; w=2 : decrease;
+{
+	if (w==1)
+	{
+		(*actstring)++;
+		if (*actstring>'9') *actstring='0';
+	}
+
+	if (w==2)
+	{
+		(*actstring)--;
+		if (*actstring<'0') *actstring='9';
+	}
+
+}
+
+
+/*
+in_de (unsigned int w, unsigned char* actstring )		//w=1 means increase; w=2 means decrease
+{
+
+	if (w==1)
+	{
+		switch (actstring[0])
+		{
+			case '0': actstring=stringnum_1;break;
+			case '1': actstring=stringnum_2;break;
+			case '2': actstring=stringnum_3;break;
+			case '3': actstring=stringnum_4;break;
+			case '4': actstring=stringnum_5;break;
+			case '5': actstring=stringnum_6;break;
+			case '6': actstring=stringnum_7;break;
+			case '7': actstring=stringnum_8;break;
+			case '8': actstring=stringnum_9;break;
+			case '9': actstring=stringnum_0;break;
+			default :break;
+		}
+	}
+
+	if (w==2)
+	{
+		switch (*actstring)
+		{
+			case '0': actstring=stringnum_9;break;
+			case '1': actstring=stringnum_0;break;
+			case '2': actstring=stringnum_1;break;
+			case '3': actstring=stringnum_2;break;
+			case '4': actstring=stringnum_3;break;
+			case '5': actstring=stringnum_4;break;
+			case '6': actstring=stringnum_5;break;
+			case '7': actstring=stringnum_6;break;
+			case '8': actstring=stringnum_7;break;
+			case '9': actstring=stringnum_8;break;
+			default :break;
+		}
+	}
+
+
+}
+
+*/
+
+
+void ui_proc207(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[7]=0; Show_Word(act[2]->x[7],(act[2]->y[7]-1)*8+1,*(act[2]->str[7]),act[2]->inverse[7]);
+		act[2]->inverse[6]=1; Show_Word(act[2]->x[6],(act[2]->y[6]-1)*8+1,*(act[2]->str[6]),act[2]->inverse[6]);
+		ui_state=206;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[7]=0; Show_Word(act[2]->x[7],(act[2]->y[7]-1)*8+1,*(act[2]->str[7]),act[2]->inverse[7]);
+		act[2]->inverse[8]=1; Show_Word(act[2]->x[8],(act[2]->y[8]-1)*8+1,*(act[2]->str[8]),act[2]->inverse[8]);
+		ui_state=208;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[2]->str[7]);
+		Show_Word(act[2]->x[7],(act[2]->y[7]-1)*8+1,*(act[2]->str[7]),act[2]->inverse[7]);
+		ui_state=207;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[2]->str[7]);		
+		Show_Word(act[2]->x[7],(act[2]->y[7]-1)*8+1,*(act[2]->str[7]),act[2]->inverse[7]);
+		ui_state=207;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+
+void ui_proc208(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[8]=0; Show_Word(act[2]->x[8],(act[2]->y[8]-1)*8+1,*(act[2]->str[8]),act[2]->inverse[8]);
+		act[2]->inverse[7]=1; Show_Word(act[2]->x[7],(act[2]->y[7]-1)*8+1,*(act[2]->str[7]),act[2]->inverse[7]);
+		ui_state=207;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[8]=0; Show_Word(act[2]->x[8],(act[2]->y[8]-1)*8+1,*(act[2]->str[8]),act[2]->inverse[8]);
+		act[2]->inverse[9]=1; Show_Word(act[2]->x[9],(act[2]->y[9]-1)*8+1,*(act[2]->str[9]),act[2]->inverse[9]);
+		ui_state=209;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[2]->str[8]);
+		Show_Word(act[2]->x[8],(act[2]->y[8]-1)*8+1,*(act[2]->str[8]),act[2]->inverse[8]);
+		ui_state=208;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[2]->str[8]);		
+		Show_Word(act[2]->x[8],(act[2]->y[8]-1)*8+1,*(act[2]->str[8]),act[2]->inverse[8]);
+		ui_state=208;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void ui_proc209(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[9]=0; Show_Word(act[2]->x[9],(act[2]->y[9]-1)*8+1,*(act[2]->str[9]),act[2]->inverse[9]);
+		act[2]->inverse[8]=1; Show_Word(act[2]->x[8],(act[2]->y[8]-1)*8+1,*(act[2]->str[8]),act[2]->inverse[8]);
+		ui_state=208;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[9]=0; Show_Word(act[2]->x[9],(act[2]->y[9]-1)*8+1,*(act[2]->str[9]),act[2]->inverse[9]);
+		act[2]->inverse[10]=1; Show_Word(act[2]->x[10],(act[2]->y[10]-1)*8+1,*(act[2]->str[10]),act[2]->inverse[10]);
+		ui_state=210;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[2]->str[9]);
+		Show_Word(act[2]->x[9],(act[2]->y[9]-1)*8+1,*(act[2]->str[9]),act[2]->inverse[9]);
+		ui_state=209;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[2]->str[9]);		
+		Show_Word(act[2]->x[9],(act[2]->y[9]-1)*8+1,*(act[2]->str[9]),act[2]->inverse[9]);
+		ui_state=209;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void ui_proc210(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[10]=0; Show_Word(act[2]->x[10],(act[2]->y[10]-1)*8+1,*(act[2]->str[10]),act[2]->inverse[10]);
+		act[2]->inverse[9]=1; Show_Word(act[2]->x[9],(act[2]->y[9]-1)*8+1,*(act[2]->str[9]),act[2]->inverse[9]);
+		ui_state=209;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[10]=0; Show_Word(act[2]->x[10],(act[2]->y[10]-1)*8+1,*(act[2]->str[10]),act[2]->inverse[10]);
+		act[2]->inverse[11]=1; Show_Word(act[2]->x[11],(act[2]->y[11]-1)*8+1,*(act[2]->str[11]),act[2]->inverse[11]);
+		ui_state=211;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[2]->str[10]);
+		Show_Word(act[2]->x[10],(act[2]->y[10]-1)*8+1,*(act[2]->str[10]),act[2]->inverse[10]);
+		ui_state=210;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[2]->str[10]);		
+		Show_Word(act[2]->x[10],(act[2]->y[10]-1)*8+1,*(act[2]->str[10]),act[2]->inverse[10]);
+		ui_state=210;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc211(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[11]=0; Show_Word(act[2]->x[11],(act[2]->y[11]-1)*8+1,*(act[2]->str[11]),act[2]->inverse[11]);
+		act[2]->inverse[10]=1; Show_Word(act[2]->x[10],(act[2]->y[10]-1)*8+1,*(act[2]->str[10]),act[2]->inverse[10]);
+		ui_state=210;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[11]=0; Show_Word(act[2]->x[11],(act[2]->y[11]-1)*8+1,*(act[2]->str[11]),act[2]->inverse[11]);
+		act[2]->inverse[12]=1; Show_Word(act[2]->x[12],(act[2]->y[12]-1)*8+1,*(act[2]->str[12]),act[2]->inverse[12]);
+		ui_state=212;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[2]->str[11]);
+		Show_Word(act[2]->x[10],(act[2]->y[11]-1)*8+1,*(act[2]->str[11]),act[2]->inverse[11]);
+		ui_state=211;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[2]->str[11]);		
+		Show_Word(act[2]->x[11],(act[2]->y[11]-1)*8+1,*(act[2]->str[11]),act[2]->inverse[11]);
+		ui_state=211;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc212(void)
+{
+	if(key_UP_flag)
+	{
+		act[2]->inverse[12]=0; Show_Word(act[2]->x[12],(act[2]->y[12]-1)*8+1,*(act[2]->str[12]),act[2]->inverse[12]);
+		act[2]->inverse[11]=1; Show_Word(act[2]->x[11],(act[2]->y[11]-1)*8+1,*(act[2]->str[11]),act[2]->inverse[11]);
+		ui_state=211;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[2]->inverse[12]=0; Show_Word(act[2]->x[12],(act[2]->y[12]-1)*8+1,*(act[2]->str[12]),act[2]->inverse[12]);
+		act[2]->inverse[5]=1; Show_Word(act[2]->x[5],(act[2]->y[5]-1)*8+1,*(act[2]->str[5]),act[2]->inverse[5]);
+		ui_state=205;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[2]->str[12]);
+		Show_Word(act[2]->x[12],(act[2]->y[12]-1)*8+1,*(act[2]->str[12]),act[2]->inverse[12]);
+		ui_state=212;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[2]->str[12]);		
+		Show_Word(act[2]->x[12],(act[2]->y[12]-1)*8+1,*(act[2]->str[12]),act[2]->inverse[12]);
+		ui_state=212;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc306(void)
+{
+	if (key_ENTER_flag)
+	{
+		act[3]->inverse[6]=0;
+		act[1]->inverse[1]=1; display_ui_act(1);
+		itoafreq(mode1_freq1,a2_s7,a2_s8,a2_s9);
+		itoafreq(mode1_freq2, a2_s10,a2_s11,a2_s12);
+		mode=0;
+		ui_state=101;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+
+void ui_proc404(void)
+{
+	if(key_UP_flag)
+	{
+		act[4]->inverse[4]=0; Show_Word(act[4]->x[4],(act[4]->y[4]-1)*8+1,*(act[4]->str[4]),act[4]->inverse[4]);
+		act[4]->inverse[9]=1; Show_Word(act[4]->x[9],(act[4]->y[9]-1)*8+1,*(act[4]->str[9]),act[4]->inverse[9]);
+		ui_state=409;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[4]->inverse[4]=0; Show_Word(act[4]->x[4],(act[4]->y[4]-1)*8+1,*(act[4]->str[4]),act[4]->inverse[4]);
+		act[4]->inverse[5]=1; Show_Word(act[4]->x[5],(act[4]->y[5]-1)*8+1,*(act[4]->str[5]),act[4]->inverse[5]);
+		ui_state=405;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[4]->inverse[4]=0;
+		act[5]->inverse[5]=1;
+		act[5]->str[6]=act[4]->str[6];act[5]->str[7]=act[4]->str[7];act[5]->str[8]=act[4]->str[8];
+		mode2_freq = atoifreq(act[4]->str[6],act[4]->str[7],act[4]->str[8]);
+		mode2_phasediff = degree_counter;
+		act[5]->str[9]=act[4]->str[9];
+		mode=2;modechangeflag=2;
+		display_ui_act(5);
+		ui_state=505;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc405(void)
+{
+	if(key_UP_flag)
+	{
+		act[4]->inverse[5]=0; Show_Word(act[4]->x[5],(act[4]->y[5]-1)*8+1,*(act[4]->str[5]),act[4]->inverse[5]);
+		act[4]->inverse[4]=1; Show_Word(act[4]->x[4],(act[4]->y[4]-1)*8+1,*(act[4]->str[4]),act[4]->inverse[4]);
+		ui_state=404;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[4]->inverse[5]=0; Show_Word(act[4]->x[5],(act[4]->y[5]-1)*8+1,*(act[4]->str[5]),act[4]->inverse[5]);
+		act[4]->inverse[6]=1; Show_Word(act[4]->x[6],(act[4]->y[6]-1)*8+1,*(act[4]->str[6]),act[4]->inverse[6]);
+		ui_state=406;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[4]->inverse[5]=0;
+		act[1]->inverse[2]=1; display_ui_act(1);
+		itoafreq(mode2_freq,a4_s6,a4_s7,a4_s8);
+		itodegree(mode2_phasediff,&a4_s9);
+		mode=0;
+		ui_state=102;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc406(void)
+{
+	if(key_UP_flag)
+	{
+		act[4]->inverse[6]=0; Show_Word(act[4]->x[6],(act[4]->y[6]-1)*8+1,*(act[4]->str[6]),act[4]->inverse[6]);
+		act[4]->inverse[5]=1; Show_Word(act[4]->x[5],(act[4]->y[5]-1)*8+1,*(act[4]->str[5]),act[4]->inverse[5]);
+		ui_state=405;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[4]->inverse[6]=0; Show_Word(act[4]->x[6],(act[4]->y[6]-1)*8+1,*(act[4]->str[6]),act[4]->inverse[6]);
+		act[4]->inverse[7]=1; Show_Word(act[4]->x[7],(act[4]->y[7]-1)*8+1,*(act[4]->str[7]),act[4]->inverse[7]);
+		ui_state=407;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[4]->str[6]);
+		Show_Word(act[4]->x[6],(act[4]->y[6]-1)*8+1,*(act[4]->str[6]),act[4]->inverse[6]);
+		ui_state=406;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[4]->str[6]);		
+		Show_Word(act[4]->x[6],(act[4]->y[6]-1)*8+1,*(act[4]->str[6]),act[4]->inverse[6]);
+		ui_state=406;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void ui_proc407(void)
+{
+	if(key_UP_flag)
+	{
+		act[4]->inverse[7]=0; Show_Word(act[4]->x[7],(act[4]->y[7]-1)*8+1,*(act[4]->str[7]),act[4]->inverse[7]);
+		act[4]->inverse[6]=1; Show_Word(act[4]->x[6],(act[4]->y[6]-1)*8+1,*(act[4]->str[6]),act[4]->inverse[6]);
+		ui_state=406;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[4]->inverse[7]=0; Show_Word(act[4]->x[7],(act[4]->y[7]-1)*8+1,*(act[4]->str[7]),act[4]->inverse[7]);
+		act[4]->inverse[8]=1; Show_Word(act[4]->x[8],(act[4]->y[8]-1)*8+1,*(act[4]->str[8]),act[4]->inverse[8]);
+		ui_state=408;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[4]->str[7]);
+		Show_Word(act[4]->x[7],(act[4]->y[7]-1)*8+1,*(act[4]->str[7]),act[4]->inverse[7]);
+		ui_state=407;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[4]->str[7]);		
+		Show_Word(act[4]->x[7],(act[4]->y[7]-1)*8+1,*(act[4]->str[7]),act[4]->inverse[7]);
+		ui_state=407;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc408(void)
+{
+	if(key_UP_flag)
+	{
+		act[4]->inverse[8]=0; Show_Word(act[4]->x[8],(act[4]->y[8]-1)*8+1,*(act[4]->str[8]),act[4]->inverse[8]);
+		act[4]->inverse[7]=1; Show_Word(act[4]->x[7],(act[4]->y[7]-1)*8+1,*(act[4]->str[7]),act[4]->inverse[7]);
+		ui_state=407;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[4]->inverse[8]=0; Show_Word(act[4]->x[8],(act[4]->y[8]-1)*8+1,*(act[4]->str[8]),act[4]->inverse[8]);
+		act[4]->inverse[9]=1; Show_Word(act[4]->x[9],(act[4]->y[9]-1)*8+1,*(act[4]->str[9]),act[4]->inverse[9]);
+		ui_state=409;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[4]->str[8]);
+		Show_Word(act[4]->x[8],(act[4]->y[8]-1)*8+1,*(act[4]->str[8]),act[4]->inverse[8]);
+		ui_state=408;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[4]->str[8]);		
+		Show_Word(act[4]->x[8],(act[4]->y[8]-1)*8+1,*(act[4]->str[8]),act[4]->inverse[8]);
+		ui_state=408;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void in_de_degree(int degree_counter)
+{
+		switch (degree_counter)
+		{
+			case 0: act[4]->str[9]= stringdegree_00;break;
+			case 1: act[4]->str[9]= stringdegree_01;break;
+			case 2: act[4]->str[9]= stringdegree_02;break;
+			case 3: act[4]->str[9]= stringdegree_03;break;
+			case 4: act[4]->str[9]= stringdegree_04;break;
+			case 5: act[4]->str[9]= stringdegree_05;break;
+			case 6: act[4]->str[9]= stringdegree_06;break;
+			case 7: act[4]->str[9]= stringdegree_07;break;
+			case 8: act[4]->str[9]= stringdegree_08;break;
+			case 9: act[4]->str[9]= stringdegree_09;break;
+			case 10: act[4]->str[9]= stringdegree_10;break;
+			case 11: act[4]->str[9]= stringdegree_11;break;
+			case 12: act[4]->str[9]= stringdegree_12;break;
+			case 13: act[4]->str[9]= stringdegree_13;break;
+			case 14: act[4]->str[9]= stringdegree_14;break;
+			case 15: act[4]->str[9]= stringdegree_15;break;
+			case 16: act[4]->str[9]= stringdegree_16;break;
+			case 17: act[4]->str[9]= stringdegree_17;break;
+			case 18: act[4]->str[9]= stringdegree_18;break;
+			case 19: act[4]->str[9]= stringdegree_19;break;
+			case 20: act[4]->str[9]= stringdegree_20;break;
+			case 21: act[4]->str[9]= stringdegree_21;break;
+			case 22: act[4]->str[9]= stringdegree_22;break;
+			case 23: act[4]->str[9]= stringdegree_23;break;
+			case 24: act[4]->str[9]= stringdegree_24;break;
+			case 25: act[4]->str[9]= stringdegree_25;break;
+			case 26: act[4]->str[9]= stringdegree_26;break;
+			case 27: act[4]->str[9]= stringdegree_27;break;
+			case 28: act[4]->str[9]= stringdegree_28;break;
+			case 29: act[4]->str[9]= stringdegree_29;break;
+			case 30: act[4]->str[9]= stringdegree_30;break;
+			case 31: act[4]->str[9]= stringdegree_31;break;
+			
+			default: break;	 
+		} 	 
+}
+
+
+void ui_proc409(void)
+{
+	if(key_UP_flag)
+	{
+		act[4]->inverse[9]=0; Show_Word(act[4]->x[9],(act[4]->y[9]-1)*8+1,*(act[4]->str[9]),act[4]->inverse[9]);
+		act[4]->inverse[8]=1; Show_Word(act[4]->x[8],(act[4]->y[8]-1)*8+1,*(act[4]->str[8]),act[4]->inverse[8]);
+		ui_state=408;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[4]->inverse[9]=0; Show_Word(act[4]->x[9],(act[4]->y[9]-1)*8+1,*(act[4]->str[9]),act[4]->inverse[9]);
+		act[4]->inverse[4]=1; Show_Word(act[4]->x[4],(act[4]->y[4]-1)*8+1,*(act[4]->str[4]),act[4]->inverse[4]);
+		ui_state=404;
+	}
+	else if (key_INCREASE_flag)
+	{
+		degree_counter++;
+		if (degree_counter>31) degree_counter=0;
+		in_de_degree(degree_counter);
+		Show_Word(act[4]->x[9],(act[4]->y[9]-1)*8+1,*(act[4]->str[9]),act[4]->inverse[9]);
+		ui_state=409;
+	}
+	else if (key_DECREASE_flag)
+	{
+		degree_counter--;
+		if (degree_counter<0) degree_counter=31;
+		in_de_degree(degree_counter);
+		Show_Word(act[4]->x[9],(act[4]->y[9]-1)*8+1,*(act[4]->str[9]),act[4]->inverse[9]);
+		ui_state=409;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc505(void)
+{
+	if (key_ENTER_flag)
+	{
+		act[5]->inverse[5]=0;
+		act[1]->inverse[2]=1; display_ui_act(1);
+		mode=0;
+		ui_state=102;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc603(void)
+{
+	if(key_UP_flag)
+	{
+		act[6]->inverse[3]=0; Show_Word(act[6]->x[3],(act[6]->y[3]-1)*8+1,*(act[6]->str[3]),act[6]->inverse[3]);
+		act[6]->inverse[7]=1; Show_Word(act[6]->x[7],(act[6]->y[7]-1)*8+1,*(act[6]->str[7]),act[6]->inverse[7]);
+		ui_state=607;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[6]->inverse[3]=0; Show_Word(act[6]->x[3],(act[6]->y[3]-1)*8+1,*(act[6]->str[3]),act[6]->inverse[3]);
+		act[6]->inverse[4]=1; Show_Word(act[6]->x[4],(act[6]->y[4]-1)*8+1,*(act[6]->str[4]),act[6]->inverse[4]);
+		ui_state=604;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[6]->inverse[3]=0;
+		act[7]->inverse[3]=1; 
+		act[7]->str[4]=act[6]->str[5];act[7]->str[5]=act[6]->str[6];act[7]->str[6]=act[6]->str[7];
+		mode3_freq = atoifreq(act[6]->str[5],act[6]->str[6],act[6]->str[7]);
+		itostatus(mode3_status,&a7_s7);a7.str[7]=a7_s7;
+		mode=3;modechangeflag=3;
+
+		display_ui_act(7);
+		ui_state=703;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc604(void)
+{
+	if(key_UP_flag)
+	{
+		act[6]->inverse[4]=0; Show_Word(act[6]->x[4],(act[6]->y[4]-1)*8+1,*(act[6]->str[4]),act[6]->inverse[4]);
+		act[6]->inverse[3]=1; Show_Word(act[6]->x[3],(act[6]->y[3]-1)*8+1,*(act[6]->str[3]),act[6]->inverse[3]);
+		ui_state=603;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[6]->inverse[4]=0; Show_Word(act[6]->x[4],(act[6]->y[4]-1)*8+1,*(act[6]->str[4]),act[6]->inverse[4]);
+		act[6]->inverse[5]=1; Show_Word(act[6]->x[5],(act[6]->y[5]-1)*8+1,*(act[6]->str[5]),act[6]->inverse[5]);
+		ui_state=605;
+	}
+	else if (key_ENTER_flag)
+	{
+		act[6]->inverse[4]=0;
+		act[1]->inverse[3]=1; display_ui_act(1);
+		itoafreq(mode3_freq,a6_s5,a6_s6,a6_s7);
+		mode=0;
+		ui_state=103;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc605(void)
+{
+	if(key_UP_flag)
+	{
+		act[6]->inverse[5]=0; Show_Word(act[6]->x[5],(act[6]->y[5]-1)*8+1,*(act[6]->str[5]),act[6]->inverse[5]);
+		act[6]->inverse[4]=1; Show_Word(act[6]->x[4],(act[6]->y[4]-1)*8+1,*(act[6]->str[4]),act[6]->inverse[4]);
+		ui_state=604;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[6]->inverse[5]=0; Show_Word(act[6]->x[5],(act[6]->y[5]-1)*8+1,*(act[6]->str[5]),act[6]->inverse[5]);
+		act[6]->inverse[6]=1; Show_Word(act[6]->x[6],(act[6]->y[6]-1)*8+1,*(act[6]->str[6]),act[6]->inverse[6]);
+		ui_state=606;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[6]->str[5]);
+		Show_Word(act[6]->x[5],(act[6]->y[5]-1)*8+1,*(act[6]->str[5]),act[6]->inverse[5]);
+		ui_state=605;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[6]->str[5]);		
+		Show_Word(act[6]->x[5],(act[6]->y[5]-1)*8+1,*(act[6]->str[5]),act[6]->inverse[5]);
+		ui_state=605;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc606(void)
+{
+	if(key_UP_flag)
+	{
+		act[6]->inverse[6]=0; Show_Word(act[6]->x[6],(act[6]->y[6]-1)*8+1,*(act[6]->str[6]),act[6]->inverse[6]);
+		act[6]->inverse[5]=1; Show_Word(act[6]->x[5],(act[6]->y[5]-1)*8+1,*(act[6]->str[5]),act[6]->inverse[5]);
+		ui_state=605;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[6]->inverse[6]=0; Show_Word(act[6]->x[6],(act[6]->y[6]-1)*8+1,*(act[6]->str[6]),act[6]->inverse[6]);
+		act[6]->inverse[7]=1; Show_Word(act[6]->x[7],(act[6]->y[7]-1)*8+1,*(act[6]->str[7]),act[6]->inverse[7]);
+		ui_state=607;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[6]->str[6]);
+		Show_Word(act[6]->x[6],(act[6]->y[6]-1)*8+1,*(act[6]->str[6]),act[6]->inverse[6]);
+		ui_state=606;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[6]->str[6]);		
+		Show_Word(act[4]->x[6],(act[6]->y[6]-1)*8+1,*(act[6]->str[6]),act[6]->inverse[6]);
+		ui_state=606;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+void ui_proc607(void)
+{
+	if(key_UP_flag)
+	{
+		act[6]->inverse[7]=0; Show_Word(act[6]->x[7],(act[6]->y[7]-1)*8+1,*(act[6]->str[7]),act[6]->inverse[7]);
+		act[6]->inverse[6]=1; Show_Word(act[6]->x[6],(act[6]->y[6]-1)*8+1,*(act[6]->str[6]),act[6]->inverse[6]);
+		ui_state=606;
+	}
+	else if (key_DOWN_flag)
+	{
+		act[6]->inverse[7]=0; Show_Word(act[6]->x[7],(act[6]->y[7]-1)*8+1,*(act[6]->str[7]),act[6]->inverse[7]);
+		act[6]->inverse[3]=1; Show_Word(act[6]->x[3],(act[6]->y[3]-1)*8+1,*(act[6]->str[3]),act[6]->inverse[3]);
+		ui_state=603;
+	}
+	else if (key_INCREASE_flag)
+	{
+	    in_de(1,act[6]->str[7]);
+		Show_Word(act[6]->x[7],(act[6]->y[7]-1)*8+1,*(act[6]->str[7]),act[6]->inverse[7]);
+		ui_state=607;
+	}
+	else if (key_DECREASE_flag)
+	{
+		in_de(2,act[6]->str[7]);		
+		Show_Word(act[6]->x[7],(act[6]->y[7]-1)*8+1,*(act[6]->str[7]),act[6]->inverse[7]);
+		ui_state=607;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+void ui_proc703(void)
+{
+	if (key_ENTER_flag)
+	{
+		act[7]->inverse[3]=0;
+		act[1]->inverse[3]=1; display_ui_act(1);
+		mode=0;
+		ui_state=103;
+	}
+
+	if(key_ENTER_flag||key_UP_flag||key_DOWN_flag||key_INCREASE_flag||key_DECREASE_flag)
+	{
+		key_ENTER_flag=0;key_UP_flag=0;key_DOWN_flag=0;key_INCREASE_flag=0;key_DECREASE_flag=0;
+	}
+}
+
+
+
+void ui_state_proc(unsigned int ui_state)
+{
+	switch (ui_state)
+		{
+			case 0: ui_proc0(); break;
+			case 101: ui_proc101();break;
+			case 102: ui_proc102();break;
+			case 103: ui_proc103();break;
+			case 205: ui_proc205();break;
+			case 206: ui_proc206();break;
+			case 207: ui_proc207();break;
+			case 208: ui_proc208();break;
+			case 209: ui_proc209();break;
+			case 210: ui_proc210();break;
+			case 211: ui_proc211();break;
+			case 212: ui_proc212();break;
+			case 306: ui_proc306();break;
+			case 404: ui_proc404();break;
+			case 405: ui_proc405();break;
+			case 406: ui_proc406();break;
+			case 407: ui_proc407();break;
+			case 408: ui_proc408();break;
+			case 409: ui_proc409();break;
+			case 505: ui_proc505();break;
+			case 603: ui_proc603();break;
+			case 604: ui_proc604();break;
+			case 605: ui_proc605();break;
+			case 606: ui_proc606();break;
+			case 607: ui_proc607();break;
+			case 703: ui_proc703();break;  
+
+			default: break;
+		}
+
+}
