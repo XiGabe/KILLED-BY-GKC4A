@@ -129,14 +129,17 @@ int main(void)
 	ad9850_reset();
 
 	DrvTIMER_EnableInt(E_TMR0);
-	setup_AD9850(100,100,0,270/11.25);		//TEST
-
+	setup_AD9850(1,1,0,180/11.25);		//注意！！这里的180度为真正的相位差，即每次修改的度数都要除以11.25
 
 // 主循环，本例中，在Timer0_A0中断服务程序未被执行的空余时间里，处理机在以下程序中不断循环
 	while(1)
 	 {
-			ui_state_proc(ui_state);
-			if (clock1s_flag==1)   // 检查1秒定时是否到
+			ui_state_proc(ui_state); //直接进入单片机操控系统
+			
+		 
+		 
+		 
+		 if (clock1s_flag==1)   // 定时1秒，以下代码都没什么用！
 		 {
 				clock1s_flag=0;
 				if(led==0)
