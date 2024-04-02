@@ -19,7 +19,7 @@
 ### ADS-LD Output File: 'project0904.axf'
 ### ADS-LD Command File: 'project0904.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'project0904.lnp', Handle=0x000006F4
+### Creating CmdFile 'project0904.lnp', Handle=0x00001204
 ### Writing '.lnp' file
 ### ADS-LD Command file 'project0904.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

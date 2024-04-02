@@ -1,6 +1,3 @@
-/////////////////////////////////////////////////
-//ÖÐ¶ÏTimer0ÆµÂÊ200HZ,Ö÷ÆµÂÊ1MHZ£¬SPIÊ±ÖÓÆµÂÊXXMHZ£¬ADC²ÉÑùÆµÂÊXXMHZ
-////////////////////////////////////////////////
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,34 +11,27 @@
 #include "ScanKey6+20171024.c"
 #include "AD9850FUNC0903.c"
 #include "UIFUNC0728.c"
-//////////////////////////////
-// ³£Á¿¶¨Òå  Î±Ö¸Áî¶¨Òå     //
-//////////////////////////////
 
-// 1sÈí¼þ¶¨Ê±Æ÷Òç³öÖµ£¬200¸ö5ms
 #define V_T1s	200
-//Î±Ö¸Áî  
-#define C12LED_H    DrvGPIO_SetBit(E_GPC,12)	//led off °åÉÏLEDµÆ
+#define C12LED_H    DrvGPIO_SetBit(E_GPC,12)	//led off ï¿½ï¿½ï¿½ï¿½LEDï¿½ï¿½
 #define C12LED_L    DrvGPIO_ClrBit(E_GPC,12)   //led on
-#define PD11_H    DrvGPIO_SetBit(E_GPE,12)	   //ÖÐ¶Ï²âÊÔ¹Ü½Å
-#define PD11_L    DrvGPIO_ClrBit(E_GPE,12)	   //ÖÐ¶Ï²âÊÔ¹Ü½Å
+#define PD11_H    DrvGPIO_SetBit(E_GPE,12)	   //ï¿½Ð¶Ï²ï¿½ï¿½Ô¹Ü½ï¿½
+#define PD11_L    DrvGPIO_ClrBit(E_GPE,12)	   //ï¿½Ð¶Ï²ï¿½ï¿½Ô¹Ü½ï¿½
 
 
-//////////////////////////////
-//			±äÁ¿¶¨Òå        //
-//////////////////////////////
-
-// 1sÈí¼þ¶¨Ê±Æ÷¼ÆÊý
 unsigned int clock1s=0;
-// 1sÈí¼þ¶¨Ê±Æ÷Òç³ö±êÖ¾
 unsigned int clock1s_flag=0;
 unsigned int times10s=0;
 unsigned int led=0;
-
 unsigned char key_display[]="0";
-								
+unsigned int clock10ms=0;
+int ADC5_value=0,ADC6_value=0;
+char Show_ADC5[4];
+char Show_ADC6[4];
+unsigned char phase=0;
+unsigned int PLL_flag=0;			
 
-void itoa(int i, unsigned char* istr) //×Ô¶¨ÒåÕûÊýµ½ASCII×ª»»º¯Êý
+void itoa(int i, unsigned char* istr) //å°†æ•´æ•°è½¬æ¢ä¸ºå­—ç¬¦ä¸²ï¼ˆASCIIæ ¼å¼ï¼‰
 {
 	unsigned int j;
 	j=i/1000;
@@ -58,62 +48,100 @@ void itoa(int i, unsigned char* istr) //×Ô¶¨ÒåÕûÊýµ½ASCII×ª»»º¯Êý
 }
 
 
-void Port_Init(void) //³õÊ¼»¯AD9850Ä£¿é¡¢LCDºÍ¼üÅÌµÈ¶à¸ö¶Ë¿ÚºÍÍâÉè¡£
+void Port_Init(void) //åˆå§‹åŒ–AD9850æ¨¡å—ã€LCDå’ŒæŒ‰é”®ç­‰è®¾å¤‡çš„GPIOç«¯å£
 {
-		ad9850_Port_Init();
-		Initial_pannel();
-		OpenKeyPad();
-		DrvGPIO_Open(E_GPC, 12, E_IO_OUTPUT);			  //LED
-		DrvGPIO_Open(E_GPE, 12, E_IO_OUTPUT);			  //ÖÐ¶Ï²âÊÔ
+	ad9850_Port_Init();
+	Initial_pannel();
+	OpenKeyPad();
+	DrvGPIO_Open(E_GPC, 12, E_IO_OUTPUT);			 
+	DrvGPIO_Open(E_GPE, 12, E_IO_OUTPUT);			 
+	DrvGPIO_Open(E_GPC, 13, E_IO_OUTPUT); 
 }
 
- void Timer0_Callback (void) //Õâ¸öº¯ÊýÊÇTimer0ÖÐ¶ÏµÄ»Øµ÷£¬´¦Àí¼üÅÌÉ¨Ãè¡¢UI¸üÐÂºÍÒ»Ð©ADC²Ù×÷
+void Timer0_Callback (void) // Timer0 å®šæ—¶å™¨ä¸­æ–­çš„å›žè°ƒå‡½æ•°ï¼Œåœ¨ Timer0 ä¸­æ–­è§¦å‘æ—¶è‡ªåŠ¨è°ƒç”¨
 {
-	PD11_L;	 //ÖÐ¶ÏÊ±¼ä²âÊÔ
-	key=Scankey();
+	PD11_L;	 
+	key=Scankey(); //æŒ‰é”®å¤„ç†
 	ENTER_detect();
 	DOWN_detect();
 	UP_detect();
 	INCREASE_detect();
 	DECREASE_detect();
-////////////////////////////ADCÊý¾Ý×ª»»//////////////////////
+	
+//////////////ADC æ•°æ®è½¬æ¢//////////////////////
+	if (++clock10ms>=4)
+    {
+        clock10ms=0;
+        if (mode!=1)
+        {
+            DrvADC_StartConvert();
+            while(!DrvADC_IsConversionDone()){}
+            ADC5_value=DrvADC_GetConversionData(5);//
+            ADC6_value=DrvADC_GetConversionData(6);//å­˜å‚¨äº†ä¸¤ä¸ªADCé€šé“çš„è¯»æ•°
+            DrvADC_StopConvert();
+            //VREF=3.271V
+            ADC5_value=((ADC5_value)/4096.0)*3270;
+            ADC6_value=((ADC6_value)/4096.0)*3270;
+							
+            if(mode==3)   //é”ç›¸çŽ¯å¤„ç†
+            {
+                if(PLL_flag==0) //æ ‡å¿—æ¥ç¡®å®šæ˜¯å¦éœ€è¦è°ƒæ•´é”ç›¸çŽ¯
+                {
+                    if
+                    (((ADC5_value>1450)&&(ADC6_value>1400))||((ADC5_value<1450)&&(ADC6_value<1400)))
+                    {
+                        if (phase==0) phase=32;
+                        phase--;
+                    }
+                    else
+                    {
+                        if (phase==32) phase=0;
+                        phase++;
+                    }
+                   // setup_AD9850(mode3_freq,mode3_freq,phase,phase+8);
+                }
+								
+								/////////////mode=3 é”ç›¸çŽ¯ç¨³å®šåˆ¤æ–­/////////////////////////////
+                if (((abs(ADC5_value-1850)<150)&&(abs(ADC6_value-1550)<150))||((abs(ADC5_value-750)<200)&&(abs(ADC6_value-1600)<200)))
+                {
+                    PLL_flag=1;
+                    act[7]->str[3]="LOCKED ";
+                }
+                else
+                {
+                    PLL_flag=0;
+                    act[7]->str[3]="LOCKING ";
+                }
+            }
+        }
+    }
 
-//////////////////mode=3ËøÏà»·µ÷Õû////////////////////////////////
-
-/////////////////mode=3ËøÏà»·ÎÈ¶¨ÅÐ¶Ï/////////////////////////////
- 
-  
-////// 1ÃëÖÓÈí¶¨Ê±Æ÷¼ÆÊý /////////////////////////////////
-	if (++clock1s>=V_T1s)
-	{
-		clock1s_flag = 1; //µ±1Ãëµ½Ê±£¬Òç³ö±êÖ¾ÖÃ1
-		clock1s = 0;
-	}
-
-		PD11_H;	//ÖÐ¶ÏÊ±¼ä²âÊÔ
+		if (++clock1s>=V_T1s)
+		{
+			clock1s_flag = 1; 
+			clock1s = 0;
+		}
+		PD11_H;	
 }
 
-void Timer0_Init(void) //ÒÔÌØ¶¨ÅäÖÃ³õÊ¼»¯Timer0
+void Timer0_Init(void) //åˆå§‹åŒ–å¹¶è®¾ç½®Timer0
 {
-	DrvTIMER_Init();//³õÊ¼»¯timer
-	DrvTIMER_Open(E_TMR0,200,E_PERIODIC_MODE);//ÉèÖÃ¶¨Ê±Æ÷timer0,¶¨Ê±Æ÷tickÃ¿Ãë200´Î ,5ms
-	DrvTIMER_SetTimerEvent(E_TMR0,1,(TIMER_CALLBACK) Timer0_Callback,0); //°²×°¶¨Ê±´¦ÀíÊÂ¼þµ½timer0
+	DrvTIMER_Init();
+	DrvTIMER_Open(E_TMR0,200,E_PERIODIC_MODE);
+	DrvTIMER_SetTimerEvent(E_TMR0,1,(TIMER_CALLBACK) Timer0_Callback,0); 
 	
 }
 
-void Init_Devices(void) //´Ëº¯ÊýÉèÖÃÁË¶àÖÖÉè±¸²ÎÊý£¬°üÀ¨ÏµÍ³Ê±ÖÓ¡¢ADC¡¢¶Ë¿ÚºÍ¼ÆÊ±Æ÷
+void Init_Devices(void) //åˆå§‹åŒ–æ•´ä¸ªç³»ç»Ÿï¼ŒåŒ…æ‹¬æ—¶é’Ÿæºã€ADCã€GPIOç«¯å£å’ŒTimer0
 {	  
 	SYSCLK->APBCLK.WDT_EN =0;//Disable WDT clock source
 	DrvSYS_SetOscCtrl(E_SYS_XTL12M, 1);	 // Enable the external 12MHz oscillator oscillation
 	DrvSYS_SelectHCLKSource(0);	 // HCLK clock source. 0: external 12MHz; 4:internal 22MHz RC oscillator
 	DrvSYS_SetClockDivider(E_SYS_HCLK_DIV, 11); // HCLK clock frequency = 12M/(11+1)=1M
-
-	DrvADC_Open(ADC_SINGLE_END, ADC_SINGLE_CYCLE_OP, 102, INTERNAL_HCLK, 0);  //Ê¹ÓÃADCchannel 5&6£»ADCClock = 1M/(0+1)  =1M
-	Port_Init();             //³õÊ¼»¯I/O¿Ú
-    Timer0_Init();          //³õÊ¼»¯¶¨Ê±Æ÷0
-	
+	DrvADC_Open(ADC_SINGLE_END, ADC_SINGLE_CYCLE_OP, 102, INTERNAL_HCLK, 0);  //Ê¹ï¿½ï¿½ADCchannel 5&6ï¿½ï¿½ADCClock = 1M/(0+1)  =1M
+	Port_Init();             //ï¿½ï¿½Ê¼ï¿½ï¿½I/Oï¿½ï¿½
+  Timer0_Init();          //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½0
 	DrvTIMER_Start(E_TMR0);
-
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -122,38 +150,49 @@ int main(void)
 {
 
 	Init_Devices( );
-	DrvSYS_Delay(2000);  //ÊµÏÖ¶ÌÔÝµÄÑÓÊ±£¨2000ºÁÃë£©
+	DrvSYS_Delay(2000);  //Êµï¿½Ö¶ï¿½ï¿½Ýµï¿½ï¿½ï¿½Ê±ï¿½ï¿½2000ï¿½ï¿½ï¿½ë£©
 	times10s =2000;
 	Initial_pannel();
 	init_act();
 	ad9850_reset();
-
+	DrvSYS_Delay(2000);
 	DrvTIMER_EnableInt(E_TMR0);
-	setup_AD9850(1,1,0,180/11.25);		//×¢Òâ£¡£¡ÕâÀïµÄ180¶ÈÎªÕæÕýµÄÏàÎ»²î£¬¼´Ã¿´ÎÐÞ¸ÄµÄ¶ÈÊý¶¼Òª³ýÒÔ11.25
-
-// Ö÷Ñ­»·£¬±¾ÀýÖÐ£¬ÔÚTimer0_A0ÖÐ¶Ï·þÎñ³ÌÐòÎ´±»Ö´ÐÐµÄ¿ÕÓàÊ±¼äÀï£¬´¦Àí»úÔÚÒÔÏÂ³ÌÐòÖÐ²»¶ÏÑ­»·
+	setup_AD9850(100,100,0,90/11.25);		//ä¸¤ä¸ª100kHzçš„æ³¢ï¼Œä¸€ä¸ªç›¸ä½ä¸º0ï¼Œä¸€ä¸ªç›¸ä½ä¸º90
 	while(1)
-	 {
-			ui_state_proc(ui_state); //Ö±½Ó½øÈëµ¥Æ¬»ú²Ù¿ØÏµÍ³
-			
-		 
-		 
-		 
-		 if (clock1s_flag==1)   // ¶¨Ê±1Ãë£¬ÒÔÏÂ´úÂë¶¼Ã»Ê²Ã´ÓÃ£¡
-		 {
-				clock1s_flag=0;
-				if(led==0)
-				{
-					C12LED_L;
-					led=1;
-				}
+	{
+		ui_state_proc(ui_state); //Ö±ï¿½Ó½ï¿½ï¿½ëµ¥Æ¬ï¿½ï¿½ï¿½Ù¿ï¿½ÏµÍ³
+		if (clock1s_flag==1)   // ï¿½ï¿½Ê±1ï¿½ë£¬ï¿½ï¿½ï¿½Â´ï¿½ï¿½ë¶¼Ã»Ê²Ã´ï¿½Ã£ï¿½
+		{
+			clock1s_flag=0;
+			if (mode==3)
+      {
+           sprintf(Show_ADC5,"%04d",ADC5_value);
+           sprintf(Show_ADC6,"%04d",ADC6_value);
+           act[7]->str[8]=(unsigned char *)Show_ADC5;
+           act[7]->str[9]=(unsigned char *)Show_ADC6;
+           print_lcd(act[7]->x[8],act[7]->y[8],act[7]->str[8],act[7]->inverse[8]);
+           print_lcd(act[7]->x[9],act[7]->y[9],act[7]->str[9],act[7]->inverse[9]);
+           print_lcd(act[7]->x[3],act[7]->y[3],act[7]->str[3],act[7]->inverse[3]);
+      }
+      else if (mode==2)
+      {
+           sprintf(Show_ADC5,"%04d",ADC5_value);
+           sprintf(Show_ADC6,"%04d",ADC6_value);
+           act[5]->str[4]=(unsigned char *)Show_ADC5;
+           act[5]->str[10]=(unsigned char *)Show_ADC6;
+           print_lcd(act[5]->x[4],act[5]->y[4],act[5]->str[4],act[5]->inverse[4]);
+           print_lcd(act[5]->x[10],act[5]->y[10],act[5]->str[10],act[5]->inverse[10]);
+      }
+			if(led==0)
+			{
+				C12LED_L;
+				led=1;
+			}
 			else 
 			{
 				C12LED_H;
 				led=0;
 			}
-		 }
-	  }		 
+		}
+	}		 
 }
-
-
