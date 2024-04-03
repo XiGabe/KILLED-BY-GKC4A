@@ -3,7 +3,7 @@
 <title>Static Call Graph - [C:\Nuvoton\BSP Library\NUC100SeriesBSP_CMSIS_v1.05.003\NuvotonPlatform_Keil\Sample\NUC1xx-LB_002\KILLED-BY-GKC4A\project0904.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image C:\Nuvoton\BSP Library\NUC100SeriesBSP_CMSIS_v1.05.003\NuvotonPlatform_Keil\Sample\NUC1xx-LB_002\KILLED-BY-GKC4A\project0904.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Tue Apr 02 22:22:29 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Wed Apr 03 15:32:17 2024
 <BR><P>
 <H3>Maximum Stack Usage =        128 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -344,8 +344,8 @@ Global Symbols
 <P><STRONG><a name="[ca]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, aeabi_sdiv.o(.text), UNUSED)
 
 <P><STRONG><a name="[57]"></a>__aeabi_uidivmod</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, aeabi_sdiv.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itoafreq
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itoafreq
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockUpdate
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvSYS_GetPLLClockFreq
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvSYS_GetHCLKFreq
@@ -516,10 +516,10 @@ Global Symbols
 <P><STRONG><a name="[71]"></a>DrvGPIO_ClrBit</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, drvgpio.o(i.DrvGPIO_ClrBit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DrvGPIO_ClrBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_wr_parrel
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_reset
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_wr_parrel
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_reset
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer0_Callback
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scankey
 </UL>
@@ -549,15 +549,15 @@ Global Symbols
 <P><STRONG><a name="[70]"></a>DrvGPIO_SetBit</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, drvgpio.o(i.DrvGPIO_SetBit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DrvGPIO_SetBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_wr_parrel
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_reset
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_wr_parrel
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_reset
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer0_Callback
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scankey
 </UL>
 
-<P><STRONG><a name="[8e]"></a>DrvSYS_Delay</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, drvsys.o(i.DrvSYS_Delay))
+<P><STRONG><a name="[8f]"></a>DrvSYS_Delay</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, drvsys.o(i.DrvSYS_Delay))
 <BR><BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -613,7 +613,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[83]"></a>DrvTIMER_Init</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, drvtimer.o(i.DrvTIMER_Init))
+<P><STRONG><a name="[84]"></a>DrvTIMER_Init</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, drvtimer.o(i.DrvTIMER_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer0_Init
 </UL>
 
@@ -627,7 +627,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer0_Init
 </UL>
 
-<P><STRONG><a name="[84]"></a>DrvTIMER_SetTimerEvent</STRONG> (Thumb, 448 bytes, Stack size 36 bytes, drvtimer.o(i.DrvTIMER_SetTimerEvent))
+<P><STRONG><a name="[85]"></a>DrvTIMER_SetTimerEvent</STRONG> (Thumb, 448 bytes, Stack size 36 bytes, drvtimer.o(i.DrvTIMER_SetTimerEvent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = DrvTIMER_SetTimerEvent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer0_Init
@@ -740,7 +740,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[75]"></a>SetPACA</STRONG> (Thumb, 238 bytes, Stack size 0 bytes, mainsource0728ver2.o(i.SetPACA))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clr_all_pannal
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clr_all_pannal
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Show_Word
 </UL>
 
@@ -750,7 +750,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteData
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPACA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 </UL>
 
 <P><STRONG><a name="[5d]"></a>SystemCoreClockUpdate</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, system_nuc1xx.o(i.SystemCoreClockUpdate))
@@ -785,7 +785,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_nuc1xx.o(RESET)
 </UL>
-<P><STRONG><a name="[2d]"></a>Timer0_Callback</STRONG> (Thumb, 446 bytes, Stack size 32 bytes, mainsource0728ver2.o(i.Timer0_Callback))
+<P><STRONG><a name="[2d]"></a>Timer0_Callback</STRONG> (Thumb, 468 bytes, Stack size 32 bytes, mainsource0728ver2.o(i.Timer0_Callback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Timer0_Callback &rArr; __aeabi_ddiv
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_SetBit
@@ -794,6 +794,7 @@ Global Symbols
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvADC_StartConvert
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvADC_IsConversionDone
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvADC_GetConversionData
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_detect
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scankey
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;INCREASE_detect
@@ -810,9 +811,9 @@ Global Symbols
 <P><STRONG><a name="[69]"></a>Timer0_Init</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.Timer0_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = Timer0_Init &rArr; DrvTIMER_Open &rArr; GetTimerClock &rArr; DrvSYS_GetHCLKFreq &rArr; DrvSYS_GetPLLClockFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvTIMER_SetTimerEvent
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvTIMER_SetTimerEvent
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvTIMER_Open
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvTIMER_Init
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvTIMER_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Devices
 </UL>
@@ -827,7 +828,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_nuc1xx.o(RESET)
 </UL>
 <P><STRONG><a name="[76]"></a>WriteData</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, mainsource0728ver2.o(i.WriteData))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clr_all_pannal
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clr_all_pannal
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Show_Word
 </UL>
 
@@ -835,8 +836,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __ARM_common_switch8
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itodegree
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de_degree
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itodegree
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de_degree
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_InitFunction
 </UL>
 
@@ -852,7 +853,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Port_Init
 </UL>
 
-<P><STRONG><a name="[85]"></a>ad9850_reset</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ad9850_reset))
+<P><STRONG><a name="[86]"></a>ad9850_reset</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ad9850_reset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ad9850_reset &rArr; DrvGPIO_SetBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_SetBit
@@ -861,13 +862,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[86]"></a>ad9850_wr_parrel</STRONG> (Thumb, 196 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ad9850_wr_parrel))
+<P><STRONG><a name="[87]"></a>ad9850_wr_parrel</STRONG> (Thumb, 196 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ad9850_wr_parrel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ad9850_wr_parrel &rArr; DrvGPIO_SetBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_SetBit
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_ClrBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
 </UL>
 
 <P><STRONG><a name="[96]"></a>atoifreq</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, mainsource0728ver2.o(i.atoifreq))
@@ -877,24 +878,24 @@ Global Symbols
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc205
 </UL>
 
-<P><STRONG><a name="[87]"></a>clr_all_pannal</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.clr_all_pannal))
+<P><STRONG><a name="[88]"></a>clr_all_pannal</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.clr_all_pannal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = clr_all_pannal
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteData
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetPACA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 
 <P><STRONG><a name="[72]"></a>delay</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, mainsource0728ver2.o(i.delay))
 <BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scankey
 </UL>
 
-<P><STRONG><a name="[88]"></a>display_ui_act</STRONG> (Thumb, 72 bytes, Stack size 20 bytes, mainsource0728ver2.o(i.display_ui_act))
+<P><STRONG><a name="[89]"></a>display_ui_act</STRONG> (Thumb, 72 bytes, Stack size 20 bytes, mainsource0728ver2.o(i.display_ui_act))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clr_all_pannal
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clr_all_pannal
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc702
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc606
@@ -909,7 +910,7 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc102
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc101
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc0
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
 </UL>
 
 <P><STRONG><a name="[99]"></a>in_de</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, mainsource0728ver2.o(i.in_de))
@@ -924,7 +925,7 @@ Global Symbols
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc207
 </UL>
 
-<P><STRONG><a name="[8a]"></a>in_de_degree</STRONG> (Thumb, 116 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.in_de_degree))
+<P><STRONG><a name="[8b]"></a>in_de_degree</STRONG> (Thumb, 116 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.in_de_degree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = in_de_degree &rArr; __ARM_common_switch8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
@@ -932,32 +933,32 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc409
 </UL>
 
-<P><STRONG><a name="[8b]"></a>init_act</STRONG> (Thumb, 1692 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.init_act))
+<P><STRONG><a name="[8c]"></a>init_act</STRONG> (Thumb, 1692 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.init_act))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = init_act &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itodegree
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itoafreq
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itodegree
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itoafreq
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8c]"></a>itoafreq</STRONG> (Thumb, 82 bytes, Stack size 40 bytes, mainsource0728ver2.o(i.itoafreq))
+<P><STRONG><a name="[8d]"></a>itoafreq</STRONG> (Thumb, 82 bytes, Stack size 40 bytes, mainsource0728ver2.o(i.itoafreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = itoafreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc405
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
 </UL>
 
-<P><STRONG><a name="[8d]"></a>itodegree</STRONG> (Thumb, 80 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.itodegree))
+<P><STRONG><a name="[8e]"></a>itodegree</STRONG> (Thumb, 80 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.itodegree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = itodegree &rArr; __ARM_common_switch8
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc405
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
 </UL>
 
 <P><STRONG><a name="[3d]"></a>main</STRONG> (Thumb, 390 bytes, Stack size 0 bytes, mainsource0728ver2.o(i.main))
@@ -965,14 +966,14 @@ Global Symbols
 <LI>Call Chain = main &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvTIMER_EnableInt
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvSYS_Delay
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvSYS_Delay
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_SetBit
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_ClrBit
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_reset
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_act
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_reset
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Initial_pannel
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Devices
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
@@ -980,7 +981,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[89]"></a>print_lcd</STRONG> (Thumb, 44 bytes, Stack size 36 bytes, mainsource0728ver2.o(i.print_lcd))
+<P><STRONG><a name="[8a]"></a>print_lcd</STRONG> (Thumb, 44 bytes, Stack size 36 bytes, mainsource0728ver2.o(i.print_lcd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = print_lcd &rArr; Show_Word
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Show_Word
@@ -1005,26 +1006,27 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc102
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc101
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 
-<P><STRONG><a name="[8f]"></a>setup_AD9850</STRONG> (Thumb, 564 bytes, Stack size 24 bytes, mainsource0728ver2.o(i.setup_AD9850))
+<P><STRONG><a name="[83]"></a>setup_AD9850</STRONG> (Thumb, 564 bytes, Stack size 24 bytes, mainsource0728ver2.o(i.setup_AD9850))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = setup_AD9850 &rArr; ad9850_wr_parrel &rArr; DrvGPIO_SetBit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_SetBit
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrvGPIO_ClrBit
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_wr_parrel
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ad9850_wr_parrel
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc404
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_proc205
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer0_Callback
 </UL>
 
 <P><STRONG><a name="[91]"></a>ui_proc0</STRONG> (Thumb, 88 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.ui_proc0))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = ui_proc0 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1032,8 +1034,8 @@ Global Symbols
 <P><STRONG><a name="[92]"></a>ui_proc101</STRONG> (Thumb, 314 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc101))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc101 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1041,8 +1043,8 @@ Global Symbols
 <P><STRONG><a name="[93]"></a>ui_proc102</STRONG> (Thumb, 316 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc102))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc102 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1050,8 +1052,8 @@ Global Symbols
 <P><STRONG><a name="[94]"></a>ui_proc103</STRONG> (Thumb, 316 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc103))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc103 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1059,9 +1061,9 @@ Global Symbols
 <P><STRONG><a name="[95]"></a>ui_proc205</STRONG> (Thumb, 464 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc205))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc205 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoifreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1070,8 +1072,8 @@ Global Symbols
 <P><STRONG><a name="[97]"></a>ui_proc206</STRONG> (Thumb, 320 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc206))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc206 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1079,7 +1081,7 @@ Global Symbols
 <P><STRONG><a name="[98]"></a>ui_proc207</STRONG> (Thumb, 396 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc207))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc207 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1088,7 +1090,7 @@ Global Symbols
 <P><STRONG><a name="[9a]"></a>ui_proc208</STRONG> (Thumb, 396 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc208))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc208 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1097,7 +1099,7 @@ Global Symbols
 <P><STRONG><a name="[9b]"></a>ui_proc209</STRONG> (Thumb, 396 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc209))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc209 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1106,7 +1108,7 @@ Global Symbols
 <P><STRONG><a name="[9c]"></a>ui_proc210</STRONG> (Thumb, 396 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc210))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc210 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1115,7 +1117,7 @@ Global Symbols
 <P><STRONG><a name="[9d]"></a>ui_proc211</STRONG> (Thumb, 396 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc211))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc211 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1124,7 +1126,7 @@ Global Symbols
 <P><STRONG><a name="[9e]"></a>ui_proc212</STRONG> (Thumb, 396 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc212))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc212 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1133,8 +1135,8 @@ Global Symbols
 <P><STRONG><a name="[9f]"></a>ui_proc301</STRONG> (Thumb, 324 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc301))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc301 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1142,8 +1144,8 @@ Global Symbols
 <P><STRONG><a name="[a0]"></a>ui_proc302</STRONG> (Thumb, 324 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc302))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc302 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1151,9 +1153,9 @@ Global Symbols
 <P><STRONG><a name="[a1]"></a>ui_proc404</STRONG> (Thumb, 430 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc404))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc404 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setup_AD9850
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atoifreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1162,10 +1164,10 @@ Global Symbols
 <P><STRONG><a name="[a2]"></a>ui_proc405</STRONG> (Thumb, 348 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc405))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ui_proc405 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itodegree
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itoafreq
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itodegree
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;itoafreq
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1173,7 +1175,7 @@ Global Symbols
 <P><STRONG><a name="[a3]"></a>ui_proc406</STRONG> (Thumb, 404 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc406))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc406 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1182,7 +1184,7 @@ Global Symbols
 <P><STRONG><a name="[a4]"></a>ui_proc407</STRONG> (Thumb, 404 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc407))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc407 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1191,7 +1193,7 @@ Global Symbols
 <P><STRONG><a name="[a5]"></a>ui_proc408</STRONG> (Thumb, 404 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc408))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc408 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
@@ -1200,8 +1202,8 @@ Global Symbols
 <P><STRONG><a name="[a6]"></a>ui_proc409</STRONG> (Thumb, 440 bytes, Stack size 8 bytes, mainsource0728ver2.o(i.ui_proc409))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = ui_proc409 &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de_degree
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;print_lcd
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;in_de_degree
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1209,7 +1211,7 @@ Global Symbols
 <P><STRONG><a name="[a7]"></a>ui_proc505</STRONG> (Thumb, 112 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.ui_proc505))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = ui_proc505 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1217,7 +1219,7 @@ Global Symbols
 <P><STRONG><a name="[a8]"></a>ui_proc606</STRONG> (Thumb, 112 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.ui_proc606))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = ui_proc606 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>
@@ -1225,7 +1227,7 @@ Global Symbols
 <P><STRONG><a name="[a9]"></a>ui_proc702</STRONG> (Thumb, 112 bytes, Stack size 4 bytes, mainsource0728ver2.o(i.ui_proc702))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = ui_proc702 &rArr; display_ui_act &rArr; print_lcd &rArr; Show_Word
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_ui_act
 </UL>
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_state_proc
 </UL>

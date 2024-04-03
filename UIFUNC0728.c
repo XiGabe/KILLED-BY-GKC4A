@@ -16,6 +16,7 @@ unsigned int mode1_freq1=100;
 unsigned int mode1_freq2=100;
 unsigned int mode2_freq=100;	 //KHz
 unsigned int mode2_phasediff=8;	 //multiplied by 11.25degree
+unsigned int mode3_freq;
 unsigned char stringdegree_00[]="0бу     ";
 unsigned char stringdegree_01[]="11.25бу ";
 unsigned char stringdegree_02[]="22.5бу  ";

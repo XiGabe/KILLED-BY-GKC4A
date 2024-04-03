@@ -71,7 +71,7 @@ void Timer0_Callback (void) // Timer0 定时器中断的回调函数，在 Timer
 //////////////ADC 数据转换//////////////////////
 	if (++clock10ms>=4)
     {
-        clock10ms=0;
+        clock10ms=0;   //20ms计时器
         if (mode!=1)
         {
             DrvADC_StartConvert();
@@ -80,8 +80,8 @@ void Timer0_Callback (void) // Timer0 定时器中断的回调函数，在 Timer
             ADC6_value=DrvADC_GetConversionData(6);//存储了两个ADC通道的读数
             DrvADC_StopConvert();
             //VREF=3.271V
-            ADC5_value=((ADC5_value)/4096.0)*3270;
-            ADC6_value=((ADC6_value)/4096.0)*3270;
+            ADC5_value=((ADC5_value)/4096.0)*3297;
+            ADC6_value=((ADC6_value)/4096.0)*3297;
 							
             if(mode==3)   //锁相环处理
             {
@@ -98,7 +98,7 @@ void Timer0_Callback (void) // Timer0 定时器中断的回调函数，在 Timer
                         if (phase==32) phase=0;
                         phase++;
                     }
-                   // setup_AD9850(mode3_freq,mode3_freq,phase,phase+8);
+										setup_AD9850(mode3_freq,mode3_freq,phase,phase+8);
                 }
 								
 								/////////////mode=3 锁相环稳定判断/////////////////////////////
