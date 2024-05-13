@@ -88,7 +88,7 @@ void Timer0_Callback (void) // Timer0 定时器中断的回调函数，在 Timer
                 if(PLL_flag==0) //标志来确定是否需要调整锁相环
                 {
                     if
-                    (((ADC5_value>1450)&&(ADC6_value>1400))||((ADC5_value<1450)&&(ADC6_value<1400)))
+                    (((ADC5_value>1970)&&(ADC6_value>1970))||((ADC5_value<1970)&&(ADC6_value<1970)))
                     {
                         if (phase==0) phase=32;
                         phase--;
@@ -102,10 +102,11 @@ void Timer0_Callback (void) // Timer0 定时器中断的回调函数，在 Timer
                 }
 								
 								/////////////mode=3 锁相环稳定判断/////////////////////////////
-                if (((abs(ADC5_value-1850)<150)&&(abs(ADC6_value-1550)<150))||((abs(ADC5_value-750)<200)&&(abs(ADC6_value-1600)<200)))
+                if (((abs(ADC5_value-1970)<250)&&(abs(ADC6_value-1970)<250))) /*||((abs(ADC5_value-2700)<200)&&(abs(ADC6_value-2700)<200))*/
                 {
+										act[7]->str[3]="LOCKED ";
                     PLL_flag=1;
-                    act[7]->str[3]="LOCKED ";
+                    
                 }
                 else
                 {

@@ -164,6 +164,16 @@
           <WinNumber>1</WinNumber>
           <ItemText>ui_state</ItemText>
         </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>PLL_flag&lt;Enter expression&gt;</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>PLL_flag</ItemText>
+        </Ww>
       </WatchWindow1>
       <DebugFlag>
         <trace>0</trace>
@@ -209,7 +219,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>251</TopLine>
+      <TopLine>250</TopLine>
       <CurrentLine>264</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\startup_NUC1xx.s</PathWithFileName>
@@ -256,10 +266,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>22</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>58</TopLine>
-      <CurrentLine>79</CurrentLine>
+      <TopLine>73</TopLine>
+      <CurrentLine>90</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\mainsource0728ver2.c</PathWithFileName>
       <FilenameWithoutPath>mainsource0728ver2.c</FilenameWithoutPath>
@@ -293,7 +303,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>521</TopLine>
+      <TopLine>526</TopLine>
       <CurrentLine>541</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\Src\Driver\DrvADC.c</PathWithFileName>
@@ -307,8 +317,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>176</TopLine>
-      <CurrentLine>198</CurrentLine>
+      <TopLine>181</TopLine>
+      <CurrentLine>207</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\Src\Driver\DrvGPIO.c</PathWithFileName>
       <FilenameWithoutPath>DrvGPIO.c</FilenameWithoutPath>

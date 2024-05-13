@@ -16,7 +16,7 @@ unsigned int mode1_freq1=100;
 unsigned int mode1_freq2=100;
 unsigned int mode2_freq=100;	 //KHz
 unsigned int mode2_phasediff=8;	 //multiplied by 11.25degree
-unsigned int mode3_freq;
+unsigned int mode3_freq=100;
 unsigned char stringdegree_00[]="0°„     ";
 unsigned char stringdegree_01[]="11.25°„ ";
 unsigned char stringdegree_02[]="22.5°„  ";
@@ -37,10 +37,10 @@ struct struct_act
 
 
 struct struct_act *act[8];
-unsigned char a0_s0[]="2024GKC|COSTAS", a0_s1[]="WELCOME", a0_s2[]="PRESS ANY KEY";
-unsigned char a1_s0[]="CHOOSE OP MODE",a1_s1[]="DUO INDEP SIGNAL",a1_s2[]="90°„PHASE SIGNAL",a1_s3[]="COSTAS EXTRACTION";
+unsigned char a0_s0[]="2024GKC-COSTAS", a0_s1[]="WELCOME", a0_s2[]="PRESS ANY KEY";
+unsigned char a1_s0[]="CHOOSE OP MODE",a1_s1[]="DUO INDEP SIGNAL",a1_s2[]="90°„PHASE SIGNAL",a1_s3[]="COSTAS EXTRACT";
 unsigned char a2_s0[]="DUO INDEP SIGNAL",a2_s1[]="FREQ1",a2_s2[]="KHz",a2_s3[]="FREQ2",a2_s4[]="KHz",a2_s5[]="RUN",a2_s6[]="BACK",a2_s7[]="1",a2_s8[]="0",a2_s9[]="0",a2_s10[]="1",a2_s11[]="0",a2_s12[]="0";
-unsigned char a3_s0[]="COSTAS EXTRACTION",a3_s1[]="RUN",a3_s2[]="BACK";
+unsigned char a3_s0[]="COSTAS EXTRACT",a3_s1[]="RUN",a3_s2[]="BACK";
 unsigned char a4_s0[]="90 PHASE SIGNAL",a4_s1[]="FREQ",a4_s2[]="KHz",a4_s3[]="PHASE",a4_s4[]="RUN",a4_s5[]="BACK",a4_s6[]="1",a4_s7[]="0",a4_s8[]="0";
 unsigned char *a4_s9;//PHASE
 unsigned char a5_s0[]="90 PHASE SIGNAL",a5_s1[]="FREQ",a5_s2[]="KHz",a5_s3[]="PHASE",a5_s4[]="RUNING",a5_s5[]="BACK",a5_s6[]="1",a5_s7[]="0",a5_s8[]="0",a5_s9[]="191.25°„";
@@ -349,10 +349,10 @@ void init_act(void)
 	act[6]=&a6;
 	
 	a7.num=4;	
-	a7.str[0]=a7_s0;	a7.x[0]=0;	a7.y[0]=0;	a7.inverse[0]=0;
+	a7.str[0]=a7_s0;	a7.x[0]=1;	a7.y[0]=0;	a7.inverse[0]=0;
 	a7.str[1]=a7_s1;	a7.x[1]=3;	a7.y[1]=0;	a7.inverse[1]=0;	
-	a7.str[2]=a7_s2;	a7.x[2]=3;	a7.y[2]=12;	a7.inverse[2]=0;
-	a7.str[3]=a7_s3;	a7.x[3]=1;	a7.y[2]=5;	a7.inverse[3]=0;
+	a7.str[2]=a7_s2;	a7.x[2]=3;	a7.y[2]=4;	a7.inverse[2]=0;
+	a7.str[3]=a7_s3;	a7.x[3]=2;	a7.y[2]=10;	a7.inverse[3]=0;
 	act[7]=&a7;
 	
 	display_ui_act(0);

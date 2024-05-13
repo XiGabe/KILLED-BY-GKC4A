@@ -1018,104 +1018,104 @@ Image Symbol Table
     i.TMR2_IRQHandler                        0x00002c9c   Section        0  drvtimer.o(i.TMR2_IRQHandler)
     i.TMR3_IRQHandler                        0x00002d38   Section        0  drvtimer.o(i.TMR3_IRQHandler)
     i.Timer0_Callback                        0x00002dd4   Section        0  mainsource0728ver2.o(i.Timer0_Callback)
-    i.Timer0_Init                            0x00002ffc   Section        0  mainsource0728ver2.o(i.Timer0_Init)
-    i.UP_detect                              0x00003020   Section        0  mainsource0728ver2.o(i.UP_detect)
-    i.WDT_IRQHandler                         0x00003064   Section        0  drvtimer.o(i.WDT_IRQHandler)
-    i.WriteData                              0x00003098   Section        0  mainsource0728ver2.o(i.WriteData)
-    i.__ARM_common_switch8                   0x000030f0   Section        0  mainsource0728ver2.o(i.__ARM_common_switch8)
-    i._is_digit                              0x0000310c   Section        0  __printf_wp.o(i._is_digit)
-    i.ad9850_Port_Init                       0x0000311a   Section        0  mainsource0728ver2.o(i.ad9850_Port_Init)
-    i.ad9850_reset                           0x00003196   Section        0  mainsource0728ver2.o(i.ad9850_reset)
-    i.ad9850_wr_parrel                       0x000031da   Section        0  mainsource0728ver2.o(i.ad9850_wr_parrel)
-    i.atoifreq                               0x0000329e   Section        0  mainsource0728ver2.o(i.atoifreq)
-    i.clr_all_pannal                         0x000032c8   Section        0  mainsource0728ver2.o(i.clr_all_pannal)
-    i.delay                                  0x000032f0   Section        0  mainsource0728ver2.o(i.delay)
-    i.display_ui_act                         0x000032fc   Section        0  mainsource0728ver2.o(i.display_ui_act)
-    i.in_de                                  0x00003348   Section        0  mainsource0728ver2.o(i.in_de)
-    i.in_de_degree                           0x00003374   Section        0  mainsource0728ver2.o(i.in_de_degree)
-    i.init_act                               0x00003410   Section        0  mainsource0728ver2.o(i.init_act)
-    i.itoafreq                               0x00003b00   Section        0  mainsource0728ver2.o(i.itoafreq)
-    i.itodegree                              0x00003b54   Section        0  mainsource0728ver2.o(i.itodegree)
-    i.main                                   0x00003bc8   Section        0  mainsource0728ver2.o(i.main)
-    i.print_lcd                              0x00003d80   Section        0  mainsource0728ver2.o(i.print_lcd)
-    i.setup_AD9850                           0x00003dac   Section        0  mainsource0728ver2.o(i.setup_AD9850)
-    i.ui_proc0                               0x00004000   Section        0  mainsource0728ver2.o(i.ui_proc0)
-    i.ui_proc101                             0x00004074   Section        0  mainsource0728ver2.o(i.ui_proc101)
-    i.ui_proc102                             0x000041cc   Section        0  mainsource0728ver2.o(i.ui_proc102)
-    i.ui_proc103                             0x00004324   Section        0  mainsource0728ver2.o(i.ui_proc103)
-    i.ui_proc205                             0x0000447c   Section        0  mainsource0728ver2.o(i.ui_proc205)
-    i.ui_proc206                             0x0000467c   Section        0  mainsource0728ver2.o(i.ui_proc206)
-    i.ui_proc207                             0x000047dc   Section        0  mainsource0728ver2.o(i.ui_proc207)
-    i.ui_proc208                             0x00004984   Section        0  mainsource0728ver2.o(i.ui_proc208)
-    i.ui_proc209                             0x00004b2c   Section        0  mainsource0728ver2.o(i.ui_proc209)
-    i.ui_proc210                             0x00004cd4   Section        0  mainsource0728ver2.o(i.ui_proc210)
-    i.ui_proc211                             0x00004e7c   Section        0  mainsource0728ver2.o(i.ui_proc211)
-    i.ui_proc212                             0x00005024   Section        0  mainsource0728ver2.o(i.ui_proc212)
-    i.ui_proc301                             0x000051cc   Section        0  mainsource0728ver2.o(i.ui_proc301)
-    i.ui_proc302                             0x00005334   Section        0  mainsource0728ver2.o(i.ui_proc302)
-    i.ui_proc404                             0x00005498   Section        0  mainsource0728ver2.o(i.ui_proc404)
-    i.ui_proc405                             0x00005678   Section        0  mainsource0728ver2.o(i.ui_proc405)
-    i.ui_proc406                             0x0000580c   Section        0  mainsource0728ver2.o(i.ui_proc406)
-    i.ui_proc407                             0x000059bc   Section        0  mainsource0728ver2.o(i.ui_proc407)
-    i.ui_proc408                             0x00005b6c   Section        0  mainsource0728ver2.o(i.ui_proc408)
-    i.ui_proc409                             0x00005d1c   Section        0  mainsource0728ver2.o(i.ui_proc409)
-    i.ui_proc505                             0x00005ef4   Section        0  mainsource0728ver2.o(i.ui_proc505)
-    i.ui_proc606                             0x00005f84   Section        0  mainsource0728ver2.o(i.ui_proc606)
-    i.ui_proc702                             0x00006014   Section        0  mainsource0728ver2.o(i.ui_proc702)
-    i.ui_state_proc                          0x000060a4   Section        0  mainsource0728ver2.o(i.ui_state_proc)
-    .constdata                               0x000061c0   Section        4  mainsource0728ver2.o(.constdata)
-    x$fpl$usenofp                            0x000061c0   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x000061c4   Section       16  drvsys.o(.constdata)
-    .constdata                               0x000061d4   Section       16  drvtimer.o(.constdata)
-    .constdata                               0x000061e4   Section       17  __printf_flags_wp.o(.constdata)
-    maptable                                 0x000061e4   Data          17  __printf_flags_wp.o(.constdata)
-    .constdata                               0x000061f5   Section      128  ddiv.o(.constdata)
-    ddiv_reciptbl                            0x000061f5   Data         128  ddiv.o(.constdata)
+    i.Timer0_Init                            0x00002fc0   Section        0  mainsource0728ver2.o(i.Timer0_Init)
+    i.UP_detect                              0x00002fe4   Section        0  mainsource0728ver2.o(i.UP_detect)
+    i.WDT_IRQHandler                         0x00003028   Section        0  drvtimer.o(i.WDT_IRQHandler)
+    i.WriteData                              0x0000305c   Section        0  mainsource0728ver2.o(i.WriteData)
+    i.__ARM_common_switch8                   0x000030b4   Section        0  mainsource0728ver2.o(i.__ARM_common_switch8)
+    i._is_digit                              0x000030d0   Section        0  __printf_wp.o(i._is_digit)
+    i.ad9850_Port_Init                       0x000030de   Section        0  mainsource0728ver2.o(i.ad9850_Port_Init)
+    i.ad9850_reset                           0x0000315a   Section        0  mainsource0728ver2.o(i.ad9850_reset)
+    i.ad9850_wr_parrel                       0x0000319e   Section        0  mainsource0728ver2.o(i.ad9850_wr_parrel)
+    i.atoifreq                               0x00003262   Section        0  mainsource0728ver2.o(i.atoifreq)
+    i.clr_all_pannal                         0x0000328c   Section        0  mainsource0728ver2.o(i.clr_all_pannal)
+    i.delay                                  0x000032b4   Section        0  mainsource0728ver2.o(i.delay)
+    i.display_ui_act                         0x000032c0   Section        0  mainsource0728ver2.o(i.display_ui_act)
+    i.in_de                                  0x0000330c   Section        0  mainsource0728ver2.o(i.in_de)
+    i.in_de_degree                           0x00003338   Section        0  mainsource0728ver2.o(i.in_de_degree)
+    i.init_act                               0x000033d4   Section        0  mainsource0728ver2.o(i.init_act)
+    i.itoafreq                               0x00003ac8   Section        0  mainsource0728ver2.o(i.itoafreq)
+    i.itodegree                              0x00003b1c   Section        0  mainsource0728ver2.o(i.itodegree)
+    i.main                                   0x00003b90   Section        0  mainsource0728ver2.o(i.main)
+    i.print_lcd                              0x00003d48   Section        0  mainsource0728ver2.o(i.print_lcd)
+    i.setup_AD9850                           0x00003d74   Section        0  mainsource0728ver2.o(i.setup_AD9850)
+    i.ui_proc0                               0x00003fc8   Section        0  mainsource0728ver2.o(i.ui_proc0)
+    i.ui_proc101                             0x0000403c   Section        0  mainsource0728ver2.o(i.ui_proc101)
+    i.ui_proc102                             0x00004194   Section        0  mainsource0728ver2.o(i.ui_proc102)
+    i.ui_proc103                             0x000042ec   Section        0  mainsource0728ver2.o(i.ui_proc103)
+    i.ui_proc205                             0x00004444   Section        0  mainsource0728ver2.o(i.ui_proc205)
+    i.ui_proc206                             0x00004644   Section        0  mainsource0728ver2.o(i.ui_proc206)
+    i.ui_proc207                             0x000047a4   Section        0  mainsource0728ver2.o(i.ui_proc207)
+    i.ui_proc208                             0x0000494c   Section        0  mainsource0728ver2.o(i.ui_proc208)
+    i.ui_proc209                             0x00004af4   Section        0  mainsource0728ver2.o(i.ui_proc209)
+    i.ui_proc210                             0x00004c9c   Section        0  mainsource0728ver2.o(i.ui_proc210)
+    i.ui_proc211                             0x00004e44   Section        0  mainsource0728ver2.o(i.ui_proc211)
+    i.ui_proc212                             0x00004fec   Section        0  mainsource0728ver2.o(i.ui_proc212)
+    i.ui_proc301                             0x00005194   Section        0  mainsource0728ver2.o(i.ui_proc301)
+    i.ui_proc302                             0x000052fc   Section        0  mainsource0728ver2.o(i.ui_proc302)
+    i.ui_proc404                             0x00005460   Section        0  mainsource0728ver2.o(i.ui_proc404)
+    i.ui_proc405                             0x00005640   Section        0  mainsource0728ver2.o(i.ui_proc405)
+    i.ui_proc406                             0x000057d4   Section        0  mainsource0728ver2.o(i.ui_proc406)
+    i.ui_proc407                             0x00005984   Section        0  mainsource0728ver2.o(i.ui_proc407)
+    i.ui_proc408                             0x00005b34   Section        0  mainsource0728ver2.o(i.ui_proc408)
+    i.ui_proc409                             0x00005ce4   Section        0  mainsource0728ver2.o(i.ui_proc409)
+    i.ui_proc505                             0x00005ebc   Section        0  mainsource0728ver2.o(i.ui_proc505)
+    i.ui_proc606                             0x00005f4c   Section        0  mainsource0728ver2.o(i.ui_proc606)
+    i.ui_proc702                             0x00005fdc   Section        0  mainsource0728ver2.o(i.ui_proc702)
+    i.ui_state_proc                          0x0000606c   Section        0  mainsource0728ver2.o(i.ui_state_proc)
+    .constdata                               0x00006188   Section        4  mainsource0728ver2.o(.constdata)
+    x$fpl$usenofp                            0x00006188   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x0000618c   Section       16  drvsys.o(.constdata)
+    .constdata                               0x0000619c   Section       16  drvtimer.o(.constdata)
+    .constdata                               0x000061ac   Section       17  __printf_flags_wp.o(.constdata)
+    maptable                                 0x000061ac   Data          17  __printf_flags_wp.o(.constdata)
+    .constdata                               0x000061bd   Section      128  ddiv.o(.constdata)
+    ddiv_reciptbl                            0x000061bd   Data         128  ddiv.o(.constdata)
     .data                                    0x20000000   Section       28  system_nuc1xx.o(.data)
-    .data                                    0x2000001c   Section      696  mainsource0728ver2.o(.data)
-    .data                                    0x200002d4   Section     1520  ascii_table.o(.data)
-    .data                                    0x200008c4   Section       12  drvadc.o(.data)
-    g_ptADCCallBack                          0x200008c4   Data           4  drvadc.o(.data)
-    g_ptADCMP0CallBack                       0x200008c8   Data           4  drvadc.o(.data)
-    g_ptADCMP1CallBack                       0x200008cc   Data           4  drvadc.o(.data)
-    .data                                    0x200008d0   Section       16  drvgpio.o(.data)
-    _pfGPABCallback                          0x200008d0   Data           4  drvgpio.o(.data)
-    _pfGPCDECallback                         0x200008d4   Data           4  drvgpio.o(.data)
-    _pfEINT0Callback                         0x200008d8   Data           4  drvgpio.o(.data)
-    _pfEINT1Callback                         0x200008dc   Data           4  drvgpio.o(.data)
-    .data                                    0x200008e0   Section        8  drvsys.o(.data)
-    BOD_callbackFn                           0x200008e0   Data           4  drvsys.o(.data)
-    PWRWU_callbackFn                         0x200008e4   Data           4  drvsys.o(.data)
-    .data                                    0x200008e8   Section      104  drvtimer.o(.data)
-    uTimer0Tick                              0x20000918   Data           4  drvtimer.o(.data)
-    uTimer1Tick                              0x2000091c   Data           4  drvtimer.o(.data)
-    uTimer2Tick                              0x20000920   Data           4  drvtimer.o(.data)
-    uTimer3Tick                              0x20000924   Data           4  drvtimer.o(.data)
-    uTime0EventCount                         0x20000928   Data           4  drvtimer.o(.data)
-    uTime1EventCount                         0x2000092c   Data           4  drvtimer.o(.data)
-    uTime2EventCount                         0x20000930   Data           4  drvtimer.o(.data)
-    uTime3EventCount                         0x20000934   Data           4  drvtimer.o(.data)
-    _sys_uTimer0TickPerSecond                0x2000093c   Data           4  drvtimer.o(.data)
-    _sys_uTimer1TickPerSecond                0x20000940   Data           4  drvtimer.o(.data)
-    _sys_uTimer2TickPerSecond                0x20000944   Data           4  drvtimer.o(.data)
-    _sys_uTimer3TickPerSecond                0x20000948   Data           4  drvtimer.o(.data)
-    fnCallBack_WDT                           0x2000094c   Data           4  drvtimer.o(.data)
-    .bss                                     0x20000950   Section     1184  mainsource0728ver2.o(.bss)
-    .bss                                     0x20000df0   Section       12  drvadc.o(.bss)
-    g_pu32UserData                           0x20000df0   Data          12  drvadc.o(.bss)
-    .bss                                     0x20000dfc   Section       80  drvspi.o(.bss)
-    g_sSpiHandler                            0x20000dfc   Data          80  drvspi.o(.bss)
-    .bss                                     0x20000e4c   Section       80  drvtimer.o(.bss)
-    tTime0Event                              0x20000e4c   Data          20  drvtimer.o(.bss)
-    tTime1Event                              0x20000e60   Data          20  drvtimer.o(.bss)
-    tTime2Event                              0x20000e74   Data          20  drvtimer.o(.bss)
-    tTime3Event                              0x20000e88   Data          20  drvtimer.o(.bss)
-    .bss                                     0x20000e9c   Section       96  libspace.o(.bss)
-    HEAP                                     0x20000f00   Section        0  startup_nuc1xx.o(HEAP)
-    STACK                                    0x20000f00   Section     1024  startup_nuc1xx.o(STACK)
-    Heap_Mem                                 0x20000f00   Data           0  startup_nuc1xx.o(HEAP)
-    Stack_Mem                                0x20000f00   Data        1024  startup_nuc1xx.o(STACK)
-    __initial_sp                             0x20001300   Data           0  startup_nuc1xx.o(STACK)
+    .data                                    0x2000001c   Section      688  mainsource0728ver2.o(.data)
+    .data                                    0x200002cc   Section     1520  ascii_table.o(.data)
+    .data                                    0x200008bc   Section       12  drvadc.o(.data)
+    g_ptADCCallBack                          0x200008bc   Data           4  drvadc.o(.data)
+    g_ptADCMP0CallBack                       0x200008c0   Data           4  drvadc.o(.data)
+    g_ptADCMP1CallBack                       0x200008c4   Data           4  drvadc.o(.data)
+    .data                                    0x200008c8   Section       16  drvgpio.o(.data)
+    _pfGPABCallback                          0x200008c8   Data           4  drvgpio.o(.data)
+    _pfGPCDECallback                         0x200008cc   Data           4  drvgpio.o(.data)
+    _pfEINT0Callback                         0x200008d0   Data           4  drvgpio.o(.data)
+    _pfEINT1Callback                         0x200008d4   Data           4  drvgpio.o(.data)
+    .data                                    0x200008d8   Section        8  drvsys.o(.data)
+    BOD_callbackFn                           0x200008d8   Data           4  drvsys.o(.data)
+    PWRWU_callbackFn                         0x200008dc   Data           4  drvsys.o(.data)
+    .data                                    0x200008e0   Section      104  drvtimer.o(.data)
+    uTimer0Tick                              0x20000910   Data           4  drvtimer.o(.data)
+    uTimer1Tick                              0x20000914   Data           4  drvtimer.o(.data)
+    uTimer2Tick                              0x20000918   Data           4  drvtimer.o(.data)
+    uTimer3Tick                              0x2000091c   Data           4  drvtimer.o(.data)
+    uTime0EventCount                         0x20000920   Data           4  drvtimer.o(.data)
+    uTime1EventCount                         0x20000924   Data           4  drvtimer.o(.data)
+    uTime2EventCount                         0x20000928   Data           4  drvtimer.o(.data)
+    uTime3EventCount                         0x2000092c   Data           4  drvtimer.o(.data)
+    _sys_uTimer0TickPerSecond                0x20000934   Data           4  drvtimer.o(.data)
+    _sys_uTimer1TickPerSecond                0x20000938   Data           4  drvtimer.o(.data)
+    _sys_uTimer2TickPerSecond                0x2000093c   Data           4  drvtimer.o(.data)
+    _sys_uTimer3TickPerSecond                0x20000940   Data           4  drvtimer.o(.data)
+    fnCallBack_WDT                           0x20000944   Data           4  drvtimer.o(.data)
+    .bss                                     0x20000948   Section     1184  mainsource0728ver2.o(.bss)
+    .bss                                     0x20000de8   Section       12  drvadc.o(.bss)
+    g_pu32UserData                           0x20000de8   Data          12  drvadc.o(.bss)
+    .bss                                     0x20000df4   Section       80  drvspi.o(.bss)
+    g_sSpiHandler                            0x20000df4   Data          80  drvspi.o(.bss)
+    .bss                                     0x20000e44   Section       80  drvtimer.o(.bss)
+    tTime0Event                              0x20000e44   Data          20  drvtimer.o(.bss)
+    tTime1Event                              0x20000e58   Data          20  drvtimer.o(.bss)
+    tTime2Event                              0x20000e6c   Data          20  drvtimer.o(.bss)
+    tTime3Event                              0x20000e80   Data          20  drvtimer.o(.bss)
+    .bss                                     0x20000e94   Section       96  libspace.o(.bss)
+    HEAP                                     0x20000ef8   Section        0  startup_nuc1xx.o(HEAP)
+    STACK                                    0x20000ef8   Section     1024  startup_nuc1xx.o(STACK)
+    Heap_Mem                                 0x20000ef8   Data           0  startup_nuc1xx.o(HEAP)
+    Stack_Mem                                0x20000ef8   Data        1024  startup_nuc1xx.o(STACK)
+    __initial_sp                             0x200012f8   Data           0  startup_nuc1xx.o(STACK)
 
     Global Symbols
 
@@ -1312,56 +1312,56 @@ Image Symbol Table
     TMR1_IRQHandler                          0x00002c01   Thumb Code   144  drvtimer.o(i.TMR1_IRQHandler)
     TMR2_IRQHandler                          0x00002c9d   Thumb Code   144  drvtimer.o(i.TMR2_IRQHandler)
     TMR3_IRQHandler                          0x00002d39   Thumb Code   144  drvtimer.o(i.TMR3_IRQHandler)
-    Timer0_Callback                          0x00002dd5   Thumb Code   468  mainsource0728ver2.o(i.Timer0_Callback)
-    Timer0_Init                              0x00002ffd   Thumb Code    30  mainsource0728ver2.o(i.Timer0_Init)
-    UP_detect                                0x00003021   Thumb Code    52  mainsource0728ver2.o(i.UP_detect)
-    WDT_IRQHandler                           0x00003065   Thumb Code    42  drvtimer.o(i.WDT_IRQHandler)
-    WriteData                                0x00003099   Thumb Code    82  mainsource0728ver2.o(i.WriteData)
-    __ARM_common_switch8                     0x000030f1   Thumb Code    28  mainsource0728ver2.o(i.__ARM_common_switch8)
-    _is_digit                                0x0000310d   Thumb Code    14  __printf_wp.o(i._is_digit)
-    ad9850_Port_Init                         0x0000311b   Thumb Code   124  mainsource0728ver2.o(i.ad9850_Port_Init)
-    ad9850_reset                             0x00003197   Thumb Code    68  mainsource0728ver2.o(i.ad9850_reset)
-    ad9850_wr_parrel                         0x000031db   Thumb Code   196  mainsource0728ver2.o(i.ad9850_wr_parrel)
-    atoifreq                                 0x0000329f   Thumb Code    42  mainsource0728ver2.o(i.atoifreq)
-    clr_all_pannal                           0x000032c9   Thumb Code    40  mainsource0728ver2.o(i.clr_all_pannal)
-    delay                                    0x000032f1   Thumb Code    12  mainsource0728ver2.o(i.delay)
-    display_ui_act                           0x000032fd   Thumb Code    72  mainsource0728ver2.o(i.display_ui_act)
-    in_de                                    0x00003349   Thumb Code    42  mainsource0728ver2.o(i.in_de)
-    in_de_degree                             0x00003375   Thumb Code   116  mainsource0728ver2.o(i.in_de_degree)
-    init_act                                 0x00003411   Thumb Code  1692  mainsource0728ver2.o(i.init_act)
-    itoafreq                                 0x00003b01   Thumb Code    82  mainsource0728ver2.o(i.itoafreq)
-    itodegree                                0x00003b55   Thumb Code    80  mainsource0728ver2.o(i.itodegree)
-    main                                     0x00003bc9   Thumb Code   390  mainsource0728ver2.o(i.main)
-    print_lcd                                0x00003d81   Thumb Code    44  mainsource0728ver2.o(i.print_lcd)
-    setup_AD9850                             0x00003dad   Thumb Code   564  mainsource0728ver2.o(i.setup_AD9850)
-    ui_proc0                                 0x00004001   Thumb Code    88  mainsource0728ver2.o(i.ui_proc0)
-    ui_proc101                               0x00004075   Thumb Code   314  mainsource0728ver2.o(i.ui_proc101)
-    ui_proc102                               0x000041cd   Thumb Code   316  mainsource0728ver2.o(i.ui_proc102)
-    ui_proc103                               0x00004325   Thumb Code   316  mainsource0728ver2.o(i.ui_proc103)
-    ui_proc205                               0x0000447d   Thumb Code   464  mainsource0728ver2.o(i.ui_proc205)
-    ui_proc206                               0x0000467d   Thumb Code   320  mainsource0728ver2.o(i.ui_proc206)
-    ui_proc207                               0x000047dd   Thumb Code   396  mainsource0728ver2.o(i.ui_proc207)
-    ui_proc208                               0x00004985   Thumb Code   396  mainsource0728ver2.o(i.ui_proc208)
-    ui_proc209                               0x00004b2d   Thumb Code   396  mainsource0728ver2.o(i.ui_proc209)
-    ui_proc210                               0x00004cd5   Thumb Code   396  mainsource0728ver2.o(i.ui_proc210)
-    ui_proc211                               0x00004e7d   Thumb Code   396  mainsource0728ver2.o(i.ui_proc211)
-    ui_proc212                               0x00005025   Thumb Code   396  mainsource0728ver2.o(i.ui_proc212)
-    ui_proc301                               0x000051cd   Thumb Code   324  mainsource0728ver2.o(i.ui_proc301)
-    ui_proc302                               0x00005335   Thumb Code   324  mainsource0728ver2.o(i.ui_proc302)
-    ui_proc404                               0x00005499   Thumb Code   430  mainsource0728ver2.o(i.ui_proc404)
-    ui_proc405                               0x00005679   Thumb Code   348  mainsource0728ver2.o(i.ui_proc405)
-    ui_proc406                               0x0000580d   Thumb Code   404  mainsource0728ver2.o(i.ui_proc406)
-    ui_proc407                               0x000059bd   Thumb Code   404  mainsource0728ver2.o(i.ui_proc407)
-    ui_proc408                               0x00005b6d   Thumb Code   404  mainsource0728ver2.o(i.ui_proc408)
-    ui_proc409                               0x00005d1d   Thumb Code   440  mainsource0728ver2.o(i.ui_proc409)
-    ui_proc505                               0x00005ef5   Thumb Code   112  mainsource0728ver2.o(i.ui_proc505)
-    ui_proc606                               0x00005f85   Thumb Code   112  mainsource0728ver2.o(i.ui_proc606)
-    ui_proc702                               0x00006015   Thumb Code   112  mainsource0728ver2.o(i.ui_proc702)
-    ui_state_proc                            0x000060a5   Thumb Code   280  mainsource0728ver2.o(i.ui_state_proc)
-    __I$use$fp                               0x000061c1   Thumb Code     0  usenofp.o(x$fpl$usenofp)
-    CH_OFFSET                                0x000061d4   Data          16  drvtimer.o(.constdata)
-    Region$$Table$$Base                      0x00006278   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00006298   Number         0  anon$$obj.o(Region$$Table)
+    Timer0_Callback                          0x00002dd5   Thumb Code   416  mainsource0728ver2.o(i.Timer0_Callback)
+    Timer0_Init                              0x00002fc1   Thumb Code    30  mainsource0728ver2.o(i.Timer0_Init)
+    UP_detect                                0x00002fe5   Thumb Code    52  mainsource0728ver2.o(i.UP_detect)
+    WDT_IRQHandler                           0x00003029   Thumb Code    42  drvtimer.o(i.WDT_IRQHandler)
+    WriteData                                0x0000305d   Thumb Code    82  mainsource0728ver2.o(i.WriteData)
+    __ARM_common_switch8                     0x000030b5   Thumb Code    28  mainsource0728ver2.o(i.__ARM_common_switch8)
+    _is_digit                                0x000030d1   Thumb Code    14  __printf_wp.o(i._is_digit)
+    ad9850_Port_Init                         0x000030df   Thumb Code   124  mainsource0728ver2.o(i.ad9850_Port_Init)
+    ad9850_reset                             0x0000315b   Thumb Code    68  mainsource0728ver2.o(i.ad9850_reset)
+    ad9850_wr_parrel                         0x0000319f   Thumb Code   196  mainsource0728ver2.o(i.ad9850_wr_parrel)
+    atoifreq                                 0x00003263   Thumb Code    42  mainsource0728ver2.o(i.atoifreq)
+    clr_all_pannal                           0x0000328d   Thumb Code    40  mainsource0728ver2.o(i.clr_all_pannal)
+    delay                                    0x000032b5   Thumb Code    12  mainsource0728ver2.o(i.delay)
+    display_ui_act                           0x000032c1   Thumb Code    72  mainsource0728ver2.o(i.display_ui_act)
+    in_de                                    0x0000330d   Thumb Code    42  mainsource0728ver2.o(i.in_de)
+    in_de_degree                             0x00003339   Thumb Code   116  mainsource0728ver2.o(i.in_de_degree)
+    init_act                                 0x000033d5   Thumb Code  1694  mainsource0728ver2.o(i.init_act)
+    itoafreq                                 0x00003ac9   Thumb Code    82  mainsource0728ver2.o(i.itoafreq)
+    itodegree                                0x00003b1d   Thumb Code    80  mainsource0728ver2.o(i.itodegree)
+    main                                     0x00003b91   Thumb Code   390  mainsource0728ver2.o(i.main)
+    print_lcd                                0x00003d49   Thumb Code    44  mainsource0728ver2.o(i.print_lcd)
+    setup_AD9850                             0x00003d75   Thumb Code   564  mainsource0728ver2.o(i.setup_AD9850)
+    ui_proc0                                 0x00003fc9   Thumb Code    88  mainsource0728ver2.o(i.ui_proc0)
+    ui_proc101                               0x0000403d   Thumb Code   314  mainsource0728ver2.o(i.ui_proc101)
+    ui_proc102                               0x00004195   Thumb Code   316  mainsource0728ver2.o(i.ui_proc102)
+    ui_proc103                               0x000042ed   Thumb Code   316  mainsource0728ver2.o(i.ui_proc103)
+    ui_proc205                               0x00004445   Thumb Code   464  mainsource0728ver2.o(i.ui_proc205)
+    ui_proc206                               0x00004645   Thumb Code   320  mainsource0728ver2.o(i.ui_proc206)
+    ui_proc207                               0x000047a5   Thumb Code   396  mainsource0728ver2.o(i.ui_proc207)
+    ui_proc208                               0x0000494d   Thumb Code   396  mainsource0728ver2.o(i.ui_proc208)
+    ui_proc209                               0x00004af5   Thumb Code   396  mainsource0728ver2.o(i.ui_proc209)
+    ui_proc210                               0x00004c9d   Thumb Code   396  mainsource0728ver2.o(i.ui_proc210)
+    ui_proc211                               0x00004e45   Thumb Code   396  mainsource0728ver2.o(i.ui_proc211)
+    ui_proc212                               0x00004fed   Thumb Code   396  mainsource0728ver2.o(i.ui_proc212)
+    ui_proc301                               0x00005195   Thumb Code   324  mainsource0728ver2.o(i.ui_proc301)
+    ui_proc302                               0x000052fd   Thumb Code   324  mainsource0728ver2.o(i.ui_proc302)
+    ui_proc404                               0x00005461   Thumb Code   430  mainsource0728ver2.o(i.ui_proc404)
+    ui_proc405                               0x00005641   Thumb Code   348  mainsource0728ver2.o(i.ui_proc405)
+    ui_proc406                               0x000057d5   Thumb Code   404  mainsource0728ver2.o(i.ui_proc406)
+    ui_proc407                               0x00005985   Thumb Code   404  mainsource0728ver2.o(i.ui_proc407)
+    ui_proc408                               0x00005b35   Thumb Code   404  mainsource0728ver2.o(i.ui_proc408)
+    ui_proc409                               0x00005ce5   Thumb Code   440  mainsource0728ver2.o(i.ui_proc409)
+    ui_proc505                               0x00005ebd   Thumb Code   112  mainsource0728ver2.o(i.ui_proc505)
+    ui_proc606                               0x00005f4d   Thumb Code   112  mainsource0728ver2.o(i.ui_proc606)
+    ui_proc702                               0x00005fdd   Thumb Code   112  mainsource0728ver2.o(i.ui_proc702)
+    ui_state_proc                            0x0000606d   Thumb Code   280  mainsource0728ver2.o(i.ui_state_proc)
+    __I$use$fp                               0x00006189   Thumb Code     0  usenofp.o(x$fpl$usenofp)
+    CH_OFFSET                                0x0000619c   Data          16  drvtimer.o(.constdata)
+    Region$$Table$$Base                      0x00006240   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00006260   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_nuc1xx.o(.data)
     CyclesPerUs                              0x20000004   Data           4  system_nuc1xx.o(.data)
     gau32ClkSrcTbl                           0x20000008   Data          20  system_nuc1xx.o(.data)
@@ -1373,148 +1373,148 @@ Image Symbol Table
     mode1_freq2                              0x2000003c   Data           4  mainsource0728ver2.o(.data)
     mode2_freq                               0x20000040   Data           4  mainsource0728ver2.o(.data)
     mode2_phasediff                          0x20000044   Data           4  mainsource0728ver2.o(.data)
-    stringdegree_00                          0x20000048   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_01                          0x20000051   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_02                          0x2000005a   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_03                          0x20000063   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_04                          0x2000006c   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_05                          0x20000075   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_06                          0x2000007e   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_07                          0x20000087   Data           9  mainsource0728ver2.o(.data)
-    stringdegree_08                          0x20000090   Data           9  mainsource0728ver2.o(.data)
-    a0_s0                                    0x20000099   Data          15  mainsource0728ver2.o(.data)
-    a0_s1                                    0x200000a8   Data           8  mainsource0728ver2.o(.data)
-    a0_s2                                    0x200000b0   Data          14  mainsource0728ver2.o(.data)
-    a1_s0                                    0x200000be   Data          15  mainsource0728ver2.o(.data)
-    a1_s1                                    0x200000cd   Data          17  mainsource0728ver2.o(.data)
-    a1_s2                                    0x200000de   Data          17  mainsource0728ver2.o(.data)
-    a1_s3                                    0x200000ef   Data          18  mainsource0728ver2.o(.data)
-    a2_s0                                    0x20000101   Data          17  mainsource0728ver2.o(.data)
-    a2_s1                                    0x20000112   Data           6  mainsource0728ver2.o(.data)
-    a2_s2                                    0x20000118   Data           4  mainsource0728ver2.o(.data)
-    a2_s3                                    0x2000011c   Data           6  mainsource0728ver2.o(.data)
-    a2_s4                                    0x20000122   Data           4  mainsource0728ver2.o(.data)
-    a2_s5                                    0x20000126   Data           4  mainsource0728ver2.o(.data)
-    a2_s6                                    0x2000012a   Data           5  mainsource0728ver2.o(.data)
-    a2_s7                                    0x2000012f   Data           2  mainsource0728ver2.o(.data)
-    a2_s8                                    0x20000131   Data           2  mainsource0728ver2.o(.data)
-    a2_s9                                    0x20000133   Data           2  mainsource0728ver2.o(.data)
-    a2_s10                                   0x20000135   Data           2  mainsource0728ver2.o(.data)
-    a2_s11                                   0x20000137   Data           2  mainsource0728ver2.o(.data)
-    a2_s12                                   0x20000139   Data           2  mainsource0728ver2.o(.data)
-    a3_s0                                    0x2000013b   Data          18  mainsource0728ver2.o(.data)
-    a3_s1                                    0x2000014d   Data           4  mainsource0728ver2.o(.data)
-    a3_s2                                    0x20000151   Data           5  mainsource0728ver2.o(.data)
-    a4_s0                                    0x20000156   Data          16  mainsource0728ver2.o(.data)
-    a4_s1                                    0x20000166   Data           5  mainsource0728ver2.o(.data)
-    a4_s2                                    0x2000016b   Data           4  mainsource0728ver2.o(.data)
-    a4_s3                                    0x2000016f   Data           6  mainsource0728ver2.o(.data)
-    a4_s4                                    0x20000175   Data           4  mainsource0728ver2.o(.data)
-    a4_s5                                    0x20000179   Data           5  mainsource0728ver2.o(.data)
-    a4_s6                                    0x2000017e   Data           2  mainsource0728ver2.o(.data)
-    a4_s7                                    0x20000180   Data           2  mainsource0728ver2.o(.data)
-    a4_s8                                    0x20000182   Data           2  mainsource0728ver2.o(.data)
-    a5_s0                                    0x20000184   Data          16  mainsource0728ver2.o(.data)
-    a5_s1                                    0x20000194   Data           5  mainsource0728ver2.o(.data)
-    a5_s2                                    0x20000199   Data           4  mainsource0728ver2.o(.data)
-    a5_s3                                    0x2000019d   Data           6  mainsource0728ver2.o(.data)
-    a5_s4                                    0x200001a3   Data           7  mainsource0728ver2.o(.data)
-    a5_s5                                    0x200001aa   Data           5  mainsource0728ver2.o(.data)
-    a5_s6                                    0x200001af   Data           2  mainsource0728ver2.o(.data)
-    a5_s7                                    0x200001b1   Data           2  mainsource0728ver2.o(.data)
-    a5_s8                                    0x200001b3   Data           2  mainsource0728ver2.o(.data)
-    a5_s9                                    0x200001b5   Data           9  mainsource0728ver2.o(.data)
-    a6_s0                                    0x200001be   Data          17  mainsource0728ver2.o(.data)
-    a6_s1                                    0x200001cf   Data           6  mainsource0728ver2.o(.data)
-    a6_s2                                    0x200001d5   Data           4  mainsource0728ver2.o(.data)
-    a6_s3                                    0x200001d9   Data           6  mainsource0728ver2.o(.data)
-    a6_s4                                    0x200001df   Data           4  mainsource0728ver2.o(.data)
-    a6_s5                                    0x200001e3   Data           7  mainsource0728ver2.o(.data)
-    a6_s6                                    0x200001ea   Data           5  mainsource0728ver2.o(.data)
-    a6_s7                                    0x200001ef   Data           2  mainsource0728ver2.o(.data)
-    a6_s8                                    0x200001f1   Data           2  mainsource0728ver2.o(.data)
-    a6_s9                                    0x200001f3   Data           2  mainsource0728ver2.o(.data)
-    a6_s10                                   0x200001f5   Data           2  mainsource0728ver2.o(.data)
-    a6_s11                                   0x200001f7   Data           2  mainsource0728ver2.o(.data)
-    a6_s12                                   0x200001f9   Data           2  mainsource0728ver2.o(.data)
-    a7_s0                                    0x200001fb   Data           7  mainsource0728ver2.o(.data)
-    a7_s1                                    0x20000202   Data           8  mainsource0728ver2.o(.data)
-    a7_s2                                    0x2000020a   Data           5  mainsource0728ver2.o(.data)
-    a7_s3                                    0x2000020f   Data           7  mainsource0728ver2.o(.data)
-    ui_state                                 0x20000218   Data           4  mainsource0728ver2.o(.data)
-    key_ENTER_state                          0x2000021c   Data           4  mainsource0728ver2.o(.data)
-    key_ENTER_prestate                       0x20000220   Data           4  mainsource0728ver2.o(.data)
-    ENTER_key_timer                          0x20000224   Data           4  mainsource0728ver2.o(.data)
-    key_ENTER_flag                           0x20000228   Data           4  mainsource0728ver2.o(.data)
-    key_DOWN_state                           0x2000022c   Data           4  mainsource0728ver2.o(.data)
-    key_DOWN_prestate                        0x20000230   Data           4  mainsource0728ver2.o(.data)
-    key_DOWN_timer                           0x20000234   Data           4  mainsource0728ver2.o(.data)
-    key_DOWN_flag                            0x20000238   Data           4  mainsource0728ver2.o(.data)
-    key_UP_state                             0x2000023c   Data           4  mainsource0728ver2.o(.data)
-    key_UP_prestate                          0x20000240   Data           4  mainsource0728ver2.o(.data)
-    key_UP_timer                             0x20000244   Data           4  mainsource0728ver2.o(.data)
-    key_UP_flag                              0x20000248   Data           4  mainsource0728ver2.o(.data)
-    key_INCREASE_state                       0x2000024c   Data           4  mainsource0728ver2.o(.data)
-    key_INCREASE_prestate                    0x20000250   Data           4  mainsource0728ver2.o(.data)
-    key_INCREASE_timer                       0x20000254   Data           4  mainsource0728ver2.o(.data)
-    key_INCREASE_flag                        0x20000258   Data           4  mainsource0728ver2.o(.data)
-    degree_counter                           0x2000025c   Data           4  mainsource0728ver2.o(.data)
-    key_DECREASE_state                       0x20000260   Data           4  mainsource0728ver2.o(.data)
-    key_DECREASE_prestate                    0x20000264   Data           4  mainsource0728ver2.o(.data)
-    key_DECREASE_timer                       0x20000268   Data           4  mainsource0728ver2.o(.data)
-    key_DECREASE_flag                        0x2000026c   Data           4  mainsource0728ver2.o(.data)
-    key_state                                0x20000270   Data           4  mainsource0728ver2.o(.data)
-    key_prestate                             0x20000274   Data           4  mainsource0728ver2.o(.data)
-    state                                    0x20000278   Data           4  mainsource0728ver2.o(.data)
-    key_timer                                0x2000027c   Data           4  mainsource0728ver2.o(.data)
-    key_flag                                 0x20000280   Data           4  mainsource0728ver2.o(.data)
-    istr1                                    0x20000284   Data           7  mainsource0728ver2.o(.data)
-    clock1s                                  0x2000028c   Data           4  mainsource0728ver2.o(.data)
-    clock1s_flag                             0x20000290   Data           4  mainsource0728ver2.o(.data)
-    times10s                                 0x20000294   Data           4  mainsource0728ver2.o(.data)
-    led                                      0x20000298   Data           4  mainsource0728ver2.o(.data)
-    key_display                              0x2000029c   Data           2  mainsource0728ver2.o(.data)
-    clock10ms                                0x200002a0   Data           4  mainsource0728ver2.o(.data)
-    ADC5_value                               0x200002a4   Data           4  mainsource0728ver2.o(.data)
-    ADC6_value                               0x200002a8   Data           4  mainsource0728ver2.o(.data)
-    phase                                    0x200002ac   Data           1  mainsource0728ver2.o(.data)
-    PLL_flag                                 0x200002b0   Data           4  mainsource0728ver2.o(.data)
-    w0                                       0x200002b4   Data           1  mainsource0728ver2.o(.data)
-    w1                                       0x200002b5   Data           1  mainsource0728ver2.o(.data)
-    w2                                       0x200002b6   Data           1  mainsource0728ver2.o(.data)
-    w3                                       0x200002b7   Data           1  mainsource0728ver2.o(.data)
-    w4                                       0x200002b8   Data           1  mainsource0728ver2.o(.data)
-    dds_fq                                   0x200002bc   Data           4  mainsource0728ver2.o(.data)
-    dds_ph                                   0x200002c0   Data           1  mainsource0728ver2.o(.data)
-    mode3_freq                               0x200002c4   Data           4  mainsource0728ver2.o(.data)
-    a4_s9                                    0x200002c8   Data           4  mainsource0728ver2.o(.data)
-    Show_ADC5                                0x200002cc   Data           4  mainsource0728ver2.o(.data)
-    Show_ADC6                                0x200002d0   Data           4  mainsource0728ver2.o(.data)
-    Ascii                                    0x200002d4   Data        1520  ascii_table.o(.data)
-    bIsTimer0Initial                         0x200008e8   Data           4  drvtimer.o(.data)
-    bIsTimer1Initial                         0x200008ec   Data           4  drvtimer.o(.data)
-    bIsTimer2Initial                         0x200008f0   Data           4  drvtimer.o(.data)
-    bIsTimer3Initial                         0x200008f4   Data           4  drvtimer.o(.data)
-    bIsTimer0Used                            0x200008f8   Data           4  drvtimer.o(.data)
-    bIsTimer1Used                            0x200008fc   Data           4  drvtimer.o(.data)
-    bIsTimer2Used                            0x20000900   Data           4  drvtimer.o(.data)
-    bIsTimer3Used                            0x20000904   Data           4  drvtimer.o(.data)
-    bIsSetTime0Event                         0x20000908   Data           4  drvtimer.o(.data)
-    bIsSetTime1Event                         0x2000090c   Data           4  drvtimer.o(.data)
-    bIsSetTime2Event                         0x20000910   Data           4  drvtimer.o(.data)
-    bIsSetTime3Event                         0x20000914   Data           4  drvtimer.o(.data)
-    u32EXTClockFreq                          0x20000938   Data           4  drvtimer.o(.data)
-    a0                                       0x20000950   Data         144  mainsource0728ver2.o(.bss)
-    a1                                       0x200009e0   Data         144  mainsource0728ver2.o(.bss)
-    a2                                       0x20000a70   Data         144  mainsource0728ver2.o(.bss)
-    a3                                       0x20000b00   Data         144  mainsource0728ver2.o(.bss)
-    a4                                       0x20000b90   Data         144  mainsource0728ver2.o(.bss)
-    a5                                       0x20000c20   Data         144  mainsource0728ver2.o(.bss)
-    a6                                       0x20000cb0   Data         144  mainsource0728ver2.o(.bss)
-    a7                                       0x20000d40   Data         144  mainsource0728ver2.o(.bss)
-    act                                      0x20000dd0   Data          32  mainsource0728ver2.o(.bss)
-    __libspace_start                         0x20000e9c   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20000efc   Data           0  libspace.o(.bss)
+    mode3_freq                               0x20000048   Data           4  mainsource0728ver2.o(.data)
+    stringdegree_00                          0x2000004c   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_01                          0x20000055   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_02                          0x2000005e   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_03                          0x20000067   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_04                          0x20000070   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_05                          0x20000079   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_06                          0x20000082   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_07                          0x2000008b   Data           9  mainsource0728ver2.o(.data)
+    stringdegree_08                          0x20000094   Data           9  mainsource0728ver2.o(.data)
+    a0_s0                                    0x2000009d   Data          15  mainsource0728ver2.o(.data)
+    a0_s1                                    0x200000ac   Data           8  mainsource0728ver2.o(.data)
+    a0_s2                                    0x200000b4   Data          14  mainsource0728ver2.o(.data)
+    a1_s0                                    0x200000c2   Data          15  mainsource0728ver2.o(.data)
+    a1_s1                                    0x200000d1   Data          17  mainsource0728ver2.o(.data)
+    a1_s2                                    0x200000e2   Data          17  mainsource0728ver2.o(.data)
+    a1_s3                                    0x200000f3   Data          15  mainsource0728ver2.o(.data)
+    a2_s0                                    0x20000102   Data          17  mainsource0728ver2.o(.data)
+    a2_s1                                    0x20000113   Data           6  mainsource0728ver2.o(.data)
+    a2_s2                                    0x20000119   Data           4  mainsource0728ver2.o(.data)
+    a2_s3                                    0x2000011d   Data           6  mainsource0728ver2.o(.data)
+    a2_s4                                    0x20000123   Data           4  mainsource0728ver2.o(.data)
+    a2_s5                                    0x20000127   Data           4  mainsource0728ver2.o(.data)
+    a2_s6                                    0x2000012b   Data           5  mainsource0728ver2.o(.data)
+    a2_s7                                    0x20000130   Data           2  mainsource0728ver2.o(.data)
+    a2_s8                                    0x20000132   Data           2  mainsource0728ver2.o(.data)
+    a2_s9                                    0x20000134   Data           2  mainsource0728ver2.o(.data)
+    a2_s10                                   0x20000136   Data           2  mainsource0728ver2.o(.data)
+    a2_s11                                   0x20000138   Data           2  mainsource0728ver2.o(.data)
+    a2_s12                                   0x2000013a   Data           2  mainsource0728ver2.o(.data)
+    a3_s0                                    0x2000013c   Data          15  mainsource0728ver2.o(.data)
+    a3_s1                                    0x2000014b   Data           4  mainsource0728ver2.o(.data)
+    a3_s2                                    0x2000014f   Data           5  mainsource0728ver2.o(.data)
+    a4_s0                                    0x20000154   Data          16  mainsource0728ver2.o(.data)
+    a4_s1                                    0x20000164   Data           5  mainsource0728ver2.o(.data)
+    a4_s2                                    0x20000169   Data           4  mainsource0728ver2.o(.data)
+    a4_s3                                    0x2000016d   Data           6  mainsource0728ver2.o(.data)
+    a4_s4                                    0x20000173   Data           4  mainsource0728ver2.o(.data)
+    a4_s5                                    0x20000177   Data           5  mainsource0728ver2.o(.data)
+    a4_s6                                    0x2000017c   Data           2  mainsource0728ver2.o(.data)
+    a4_s7                                    0x2000017e   Data           2  mainsource0728ver2.o(.data)
+    a4_s8                                    0x20000180   Data           2  mainsource0728ver2.o(.data)
+    a5_s0                                    0x20000182   Data          16  mainsource0728ver2.o(.data)
+    a5_s1                                    0x20000192   Data           5  mainsource0728ver2.o(.data)
+    a5_s2                                    0x20000197   Data           4  mainsource0728ver2.o(.data)
+    a5_s3                                    0x2000019b   Data           6  mainsource0728ver2.o(.data)
+    a5_s4                                    0x200001a1   Data           7  mainsource0728ver2.o(.data)
+    a5_s5                                    0x200001a8   Data           5  mainsource0728ver2.o(.data)
+    a5_s6                                    0x200001ad   Data           2  mainsource0728ver2.o(.data)
+    a5_s7                                    0x200001af   Data           2  mainsource0728ver2.o(.data)
+    a5_s8                                    0x200001b1   Data           2  mainsource0728ver2.o(.data)
+    a5_s9                                    0x200001b3   Data           9  mainsource0728ver2.o(.data)
+    a6_s0                                    0x200001bc   Data          17  mainsource0728ver2.o(.data)
+    a6_s1                                    0x200001cd   Data           6  mainsource0728ver2.o(.data)
+    a6_s2                                    0x200001d3   Data           4  mainsource0728ver2.o(.data)
+    a6_s3                                    0x200001d7   Data           6  mainsource0728ver2.o(.data)
+    a6_s4                                    0x200001dd   Data           4  mainsource0728ver2.o(.data)
+    a6_s5                                    0x200001e1   Data           7  mainsource0728ver2.o(.data)
+    a6_s6                                    0x200001e8   Data           5  mainsource0728ver2.o(.data)
+    a6_s7                                    0x200001ed   Data           2  mainsource0728ver2.o(.data)
+    a6_s8                                    0x200001ef   Data           2  mainsource0728ver2.o(.data)
+    a6_s9                                    0x200001f1   Data           2  mainsource0728ver2.o(.data)
+    a6_s10                                   0x200001f3   Data           2  mainsource0728ver2.o(.data)
+    a6_s11                                   0x200001f5   Data           2  mainsource0728ver2.o(.data)
+    a6_s12                                   0x200001f7   Data           2  mainsource0728ver2.o(.data)
+    a7_s0                                    0x200001f9   Data           7  mainsource0728ver2.o(.data)
+    a7_s1                                    0x20000200   Data           8  mainsource0728ver2.o(.data)
+    a7_s2                                    0x20000208   Data           5  mainsource0728ver2.o(.data)
+    a7_s3                                    0x2000020d   Data           7  mainsource0728ver2.o(.data)
+    ui_state                                 0x20000214   Data           4  mainsource0728ver2.o(.data)
+    key_ENTER_state                          0x20000218   Data           4  mainsource0728ver2.o(.data)
+    key_ENTER_prestate                       0x2000021c   Data           4  mainsource0728ver2.o(.data)
+    ENTER_key_timer                          0x20000220   Data           4  mainsource0728ver2.o(.data)
+    key_ENTER_flag                           0x20000224   Data           4  mainsource0728ver2.o(.data)
+    key_DOWN_state                           0x20000228   Data           4  mainsource0728ver2.o(.data)
+    key_DOWN_prestate                        0x2000022c   Data           4  mainsource0728ver2.o(.data)
+    key_DOWN_timer                           0x20000230   Data           4  mainsource0728ver2.o(.data)
+    key_DOWN_flag                            0x20000234   Data           4  mainsource0728ver2.o(.data)
+    key_UP_state                             0x20000238   Data           4  mainsource0728ver2.o(.data)
+    key_UP_prestate                          0x2000023c   Data           4  mainsource0728ver2.o(.data)
+    key_UP_timer                             0x20000240   Data           4  mainsource0728ver2.o(.data)
+    key_UP_flag                              0x20000244   Data           4  mainsource0728ver2.o(.data)
+    key_INCREASE_state                       0x20000248   Data           4  mainsource0728ver2.o(.data)
+    key_INCREASE_prestate                    0x2000024c   Data           4  mainsource0728ver2.o(.data)
+    key_INCREASE_timer                       0x20000250   Data           4  mainsource0728ver2.o(.data)
+    key_INCREASE_flag                        0x20000254   Data           4  mainsource0728ver2.o(.data)
+    degree_counter                           0x20000258   Data           4  mainsource0728ver2.o(.data)
+    key_DECREASE_state                       0x2000025c   Data           4  mainsource0728ver2.o(.data)
+    key_DECREASE_prestate                    0x20000260   Data           4  mainsource0728ver2.o(.data)
+    key_DECREASE_timer                       0x20000264   Data           4  mainsource0728ver2.o(.data)
+    key_DECREASE_flag                        0x20000268   Data           4  mainsource0728ver2.o(.data)
+    key_state                                0x2000026c   Data           4  mainsource0728ver2.o(.data)
+    key_prestate                             0x20000270   Data           4  mainsource0728ver2.o(.data)
+    state                                    0x20000274   Data           4  mainsource0728ver2.o(.data)
+    key_timer                                0x20000278   Data           4  mainsource0728ver2.o(.data)
+    key_flag                                 0x2000027c   Data           4  mainsource0728ver2.o(.data)
+    istr1                                    0x20000280   Data           7  mainsource0728ver2.o(.data)
+    clock1s                                  0x20000288   Data           4  mainsource0728ver2.o(.data)
+    clock1s_flag                             0x2000028c   Data           4  mainsource0728ver2.o(.data)
+    times10s                                 0x20000290   Data           4  mainsource0728ver2.o(.data)
+    led                                      0x20000294   Data           4  mainsource0728ver2.o(.data)
+    key_display                              0x20000298   Data           2  mainsource0728ver2.o(.data)
+    clock10ms                                0x2000029c   Data           4  mainsource0728ver2.o(.data)
+    ADC5_value                               0x200002a0   Data           4  mainsource0728ver2.o(.data)
+    ADC6_value                               0x200002a4   Data           4  mainsource0728ver2.o(.data)
+    phase                                    0x200002a8   Data           1  mainsource0728ver2.o(.data)
+    PLL_flag                                 0x200002ac   Data           4  mainsource0728ver2.o(.data)
+    w0                                       0x200002b0   Data           1  mainsource0728ver2.o(.data)
+    w1                                       0x200002b1   Data           1  mainsource0728ver2.o(.data)
+    w2                                       0x200002b2   Data           1  mainsource0728ver2.o(.data)
+    w3                                       0x200002b3   Data           1  mainsource0728ver2.o(.data)
+    w4                                       0x200002b4   Data           1  mainsource0728ver2.o(.data)
+    dds_fq                                   0x200002b8   Data           4  mainsource0728ver2.o(.data)
+    dds_ph                                   0x200002bc   Data           1  mainsource0728ver2.o(.data)
+    a4_s9                                    0x200002c0   Data           4  mainsource0728ver2.o(.data)
+    Show_ADC5                                0x200002c4   Data           4  mainsource0728ver2.o(.data)
+    Show_ADC6                                0x200002c8   Data           4  mainsource0728ver2.o(.data)
+    Ascii                                    0x200002cc   Data        1520  ascii_table.o(.data)
+    bIsTimer0Initial                         0x200008e0   Data           4  drvtimer.o(.data)
+    bIsTimer1Initial                         0x200008e4   Data           4  drvtimer.o(.data)
+    bIsTimer2Initial                         0x200008e8   Data           4  drvtimer.o(.data)
+    bIsTimer3Initial                         0x200008ec   Data           4  drvtimer.o(.data)
+    bIsTimer0Used                            0x200008f0   Data           4  drvtimer.o(.data)
+    bIsTimer1Used                            0x200008f4   Data           4  drvtimer.o(.data)
+    bIsTimer2Used                            0x200008f8   Data           4  drvtimer.o(.data)
+    bIsTimer3Used                            0x200008fc   Data           4  drvtimer.o(.data)
+    bIsSetTime0Event                         0x20000900   Data           4  drvtimer.o(.data)
+    bIsSetTime1Event                         0x20000904   Data           4  drvtimer.o(.data)
+    bIsSetTime2Event                         0x20000908   Data           4  drvtimer.o(.data)
+    bIsSetTime3Event                         0x2000090c   Data           4  drvtimer.o(.data)
+    u32EXTClockFreq                          0x20000930   Data           4  drvtimer.o(.data)
+    a0                                       0x20000948   Data         144  mainsource0728ver2.o(.bss)
+    a1                                       0x200009d8   Data         144  mainsource0728ver2.o(.bss)
+    a2                                       0x20000a68   Data         144  mainsource0728ver2.o(.bss)
+    a3                                       0x20000af8   Data         144  mainsource0728ver2.o(.bss)
+    a4                                       0x20000b88   Data         144  mainsource0728ver2.o(.bss)
+    a5                                       0x20000c18   Data         144  mainsource0728ver2.o(.bss)
+    a6                                       0x20000ca8   Data         144  mainsource0728ver2.o(.bss)
+    a7                                       0x20000d38   Data         144  mainsource0728ver2.o(.bss)
+    act                                      0x20000dc8   Data          32  mainsource0728ver2.o(.bss)
+    __libspace_start                         0x20000e94   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20000ef4   Data           0  libspace.o(.bss)
 
 
 
@@ -1524,9 +1524,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000179
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00006be8, Max: 0x00020000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00006ba8, Max: 0x00020000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00006298, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00006260, Max: 0x00020000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1660,83 +1660,83 @@ Memory Map of the image
     0x00002c00   0x0000009c   Code   RO         1608    i.TMR1_IRQHandler   drvtimer.o
     0x00002c9c   0x0000009c   Code   RO         1609    i.TMR2_IRQHandler   drvtimer.o
     0x00002d38   0x0000009c   Code   RO         1610    i.TMR3_IRQHandler   drvtimer.o
-    0x00002dd4   0x00000228   Code   RO           74    i.Timer0_Callback   mainsource0728ver2.o
-    0x00002ffc   0x00000024   Code   RO           75    i.Timer0_Init       mainsource0728ver2.o
-    0x00003020   0x00000044   Code   RO           76    i.UP_detect         mainsource0728ver2.o
-    0x00003064   0x00000034   Code   RO         1611    i.WDT_IRQHandler    drvtimer.o
-    0x00003098   0x00000058   Code   RO           77    i.WriteData         mainsource0728ver2.o
-    0x000030f0   0x0000001c   Code   RO          416    i.__ARM_common_switch8  mainsource0728ver2.o
-    0x0000310c   0x0000000e   Code   RO         1876    i._is_digit         c_p.l(__printf_wp.o)
-    0x0000311a   0x0000007c   Code   RO           78    i.ad9850_Port_Init  mainsource0728ver2.o
-    0x00003196   0x00000044   Code   RO           79    i.ad9850_reset      mainsource0728ver2.o
-    0x000031da   0x000000c4   Code   RO           80    i.ad9850_wr_parrel  mainsource0728ver2.o
-    0x0000329e   0x0000002a   Code   RO           81    i.atoifreq          mainsource0728ver2.o
-    0x000032c8   0x00000028   Code   RO           82    i.clr_all_pannal    mainsource0728ver2.o
-    0x000032f0   0x0000000c   Code   RO           83    i.delay             mainsource0728ver2.o
-    0x000032fc   0x0000004c   Code   RO           84    i.display_ui_act    mainsource0728ver2.o
-    0x00003348   0x0000002a   Code   RO           85    i.in_de             mainsource0728ver2.o
-    0x00003372   0x00000002   PAD
-    0x00003374   0x0000009c   Code   RO           86    i.in_de_degree      mainsource0728ver2.o
-    0x00003410   0x000006f0   Code   RO           87    i.init_act          mainsource0728ver2.o
-    0x00003b00   0x00000052   Code   RO           89    i.itoafreq          mainsource0728ver2.o
-    0x00003b52   0x00000002   PAD
-    0x00003b54   0x00000074   Code   RO           90    i.itodegree         mainsource0728ver2.o
-    0x00003bc8   0x000001b8   Code   RO           91    i.main              mainsource0728ver2.o
-    0x00003d80   0x0000002c   Code   RO           92    i.print_lcd         mainsource0728ver2.o
-    0x00003dac   0x00000254   Code   RO           93    i.setup_AD9850      mainsource0728ver2.o
-    0x00004000   0x00000074   Code   RO           94    i.ui_proc0          mainsource0728ver2.o
-    0x00004074   0x00000158   Code   RO           95    i.ui_proc101        mainsource0728ver2.o
-    0x000041cc   0x00000158   Code   RO           96    i.ui_proc102        mainsource0728ver2.o
-    0x00004324   0x00000158   Code   RO           97    i.ui_proc103        mainsource0728ver2.o
-    0x0000447c   0x00000200   Code   RO           98    i.ui_proc205        mainsource0728ver2.o
-    0x0000467c   0x00000160   Code   RO           99    i.ui_proc206        mainsource0728ver2.o
-    0x000047dc   0x000001a8   Code   RO          100    i.ui_proc207        mainsource0728ver2.o
-    0x00004984   0x000001a8   Code   RO          101    i.ui_proc208        mainsource0728ver2.o
-    0x00004b2c   0x000001a8   Code   RO          102    i.ui_proc209        mainsource0728ver2.o
-    0x00004cd4   0x000001a8   Code   RO          103    i.ui_proc210        mainsource0728ver2.o
-    0x00004e7c   0x000001a8   Code   RO          104    i.ui_proc211        mainsource0728ver2.o
-    0x00005024   0x000001a8   Code   RO          105    i.ui_proc212        mainsource0728ver2.o
-    0x000051cc   0x00000168   Code   RO          106    i.ui_proc301        mainsource0728ver2.o
-    0x00005334   0x00000164   Code   RO          107    i.ui_proc302        mainsource0728ver2.o
-    0x00005498   0x000001e0   Code   RO          108    i.ui_proc404        mainsource0728ver2.o
-    0x00005678   0x00000194   Code   RO          109    i.ui_proc405        mainsource0728ver2.o
-    0x0000580c   0x000001b0   Code   RO          110    i.ui_proc406        mainsource0728ver2.o
-    0x000059bc   0x000001b0   Code   RO          111    i.ui_proc407        mainsource0728ver2.o
-    0x00005b6c   0x000001b0   Code   RO          112    i.ui_proc408        mainsource0728ver2.o
-    0x00005d1c   0x000001d8   Code   RO          113    i.ui_proc409        mainsource0728ver2.o
-    0x00005ef4   0x00000090   Code   RO          114    i.ui_proc505        mainsource0728ver2.o
-    0x00005f84   0x00000090   Code   RO          115    i.ui_proc606        mainsource0728ver2.o
-    0x00006014   0x00000090   Code   RO          116    i.ui_proc702        mainsource0728ver2.o
-    0x000060a4   0x0000011c   Code   RO          117    i.ui_state_proc     mainsource0728ver2.o
-    0x000061c0   0x00000000   Code   RO         1919    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x000061c0   0x00000004   Data   RO          119    .constdata          mainsource0728ver2.o
-    0x000061c4   0x00000010   Data   RO         1311    .constdata          drvsys.o
-    0x000061d4   0x00000010   Data   RO         1613    .constdata          drvtimer.o
-    0x000061e4   0x00000011   Data   RO         1879    .constdata          c_p.l(__printf_flags_wp.o)
-    0x000061f5   0x00000080   Data   RO         1897    .constdata          fz_ps.l(ddiv.o)
-    0x00006275   0x00000003   PAD
-    0x00006278   0x00000020   Data   RO         2077    Region$$Table       anon$$obj.o
+    0x00002dd4   0x000001ec   Code   RO           74    i.Timer0_Callback   mainsource0728ver2.o
+    0x00002fc0   0x00000024   Code   RO           75    i.Timer0_Init       mainsource0728ver2.o
+    0x00002fe4   0x00000044   Code   RO           76    i.UP_detect         mainsource0728ver2.o
+    0x00003028   0x00000034   Code   RO         1611    i.WDT_IRQHandler    drvtimer.o
+    0x0000305c   0x00000058   Code   RO           77    i.WriteData         mainsource0728ver2.o
+    0x000030b4   0x0000001c   Code   RO          416    i.__ARM_common_switch8  mainsource0728ver2.o
+    0x000030d0   0x0000000e   Code   RO         1876    i._is_digit         c_p.l(__printf_wp.o)
+    0x000030de   0x0000007c   Code   RO           78    i.ad9850_Port_Init  mainsource0728ver2.o
+    0x0000315a   0x00000044   Code   RO           79    i.ad9850_reset      mainsource0728ver2.o
+    0x0000319e   0x000000c4   Code   RO           80    i.ad9850_wr_parrel  mainsource0728ver2.o
+    0x00003262   0x0000002a   Code   RO           81    i.atoifreq          mainsource0728ver2.o
+    0x0000328c   0x00000028   Code   RO           82    i.clr_all_pannal    mainsource0728ver2.o
+    0x000032b4   0x0000000c   Code   RO           83    i.delay             mainsource0728ver2.o
+    0x000032c0   0x0000004c   Code   RO           84    i.display_ui_act    mainsource0728ver2.o
+    0x0000330c   0x0000002a   Code   RO           85    i.in_de             mainsource0728ver2.o
+    0x00003336   0x00000002   PAD
+    0x00003338   0x0000009c   Code   RO           86    i.in_de_degree      mainsource0728ver2.o
+    0x000033d4   0x000006f4   Code   RO           87    i.init_act          mainsource0728ver2.o
+    0x00003ac8   0x00000052   Code   RO           89    i.itoafreq          mainsource0728ver2.o
+    0x00003b1a   0x00000002   PAD
+    0x00003b1c   0x00000074   Code   RO           90    i.itodegree         mainsource0728ver2.o
+    0x00003b90   0x000001b8   Code   RO           91    i.main              mainsource0728ver2.o
+    0x00003d48   0x0000002c   Code   RO           92    i.print_lcd         mainsource0728ver2.o
+    0x00003d74   0x00000254   Code   RO           93    i.setup_AD9850      mainsource0728ver2.o
+    0x00003fc8   0x00000074   Code   RO           94    i.ui_proc0          mainsource0728ver2.o
+    0x0000403c   0x00000158   Code   RO           95    i.ui_proc101        mainsource0728ver2.o
+    0x00004194   0x00000158   Code   RO           96    i.ui_proc102        mainsource0728ver2.o
+    0x000042ec   0x00000158   Code   RO           97    i.ui_proc103        mainsource0728ver2.o
+    0x00004444   0x00000200   Code   RO           98    i.ui_proc205        mainsource0728ver2.o
+    0x00004644   0x00000160   Code   RO           99    i.ui_proc206        mainsource0728ver2.o
+    0x000047a4   0x000001a8   Code   RO          100    i.ui_proc207        mainsource0728ver2.o
+    0x0000494c   0x000001a8   Code   RO          101    i.ui_proc208        mainsource0728ver2.o
+    0x00004af4   0x000001a8   Code   RO          102    i.ui_proc209        mainsource0728ver2.o
+    0x00004c9c   0x000001a8   Code   RO          103    i.ui_proc210        mainsource0728ver2.o
+    0x00004e44   0x000001a8   Code   RO          104    i.ui_proc211        mainsource0728ver2.o
+    0x00004fec   0x000001a8   Code   RO          105    i.ui_proc212        mainsource0728ver2.o
+    0x00005194   0x00000168   Code   RO          106    i.ui_proc301        mainsource0728ver2.o
+    0x000052fc   0x00000164   Code   RO          107    i.ui_proc302        mainsource0728ver2.o
+    0x00005460   0x000001e0   Code   RO          108    i.ui_proc404        mainsource0728ver2.o
+    0x00005640   0x00000194   Code   RO          109    i.ui_proc405        mainsource0728ver2.o
+    0x000057d4   0x000001b0   Code   RO          110    i.ui_proc406        mainsource0728ver2.o
+    0x00005984   0x000001b0   Code   RO          111    i.ui_proc407        mainsource0728ver2.o
+    0x00005b34   0x000001b0   Code   RO          112    i.ui_proc408        mainsource0728ver2.o
+    0x00005ce4   0x000001d8   Code   RO          113    i.ui_proc409        mainsource0728ver2.o
+    0x00005ebc   0x00000090   Code   RO          114    i.ui_proc505        mainsource0728ver2.o
+    0x00005f4c   0x00000090   Code   RO          115    i.ui_proc606        mainsource0728ver2.o
+    0x00005fdc   0x00000090   Code   RO          116    i.ui_proc702        mainsource0728ver2.o
+    0x0000606c   0x0000011c   Code   RO          117    i.ui_state_proc     mainsource0728ver2.o
+    0x00006188   0x00000000   Code   RO         1919    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x00006188   0x00000004   Data   RO          119    .constdata          mainsource0728ver2.o
+    0x0000618c   0x00000010   Data   RO         1311    .constdata          drvsys.o
+    0x0000619c   0x00000010   Data   RO         1613    .constdata          drvtimer.o
+    0x000061ac   0x00000011   Data   RO         1879    .constdata          c_p.l(__printf_flags_wp.o)
+    0x000061bd   0x00000080   Data   RO         1897    .constdata          fz_ps.l(ddiv.o)
+    0x0000623d   0x00000003   PAD
+    0x00006240   0x00000020   Data   RO         2077    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001300, Max: 0x00004000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x000012f8, Max: 0x00004000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x0000001c   Data   RW           26    .data               system_nuc1xx.o
-    0x2000001c   0x000002b8   Data   RW          120    .data               mainsource0728ver2.o
-    0x200002d4   0x000005f0   Data   RW          469    .data               ascii_table.o
-    0x200008c4   0x0000000c   Data   RW          514    .data               drvadc.o
-    0x200008d0   0x00000010   Data   RW          752    .data               drvgpio.o
-    0x200008e0   0x00000008   Data   RW         1312    .data               drvsys.o
-    0x200008e8   0x00000068   Data   RW         1614    .data               drvtimer.o
-    0x20000950   0x000004a0   Zero   RW          118    .bss                mainsource0728ver2.o
-    0x20000df0   0x0000000c   Zero   RW          513    .bss                drvadc.o
-    0x20000dfc   0x00000050   Zero   RW         1003    .bss                drvspi.o
-    0x20000e4c   0x00000050   Zero   RW         1612    .bss                drvtimer.o
-    0x20000e9c   0x00000060   Zero   RW         1955    .bss                c_p.l(libspace.o)
-    0x20000efc   0x00000004   PAD
-    0x20000f00   0x00000000   Zero   RW            2    HEAP                startup_nuc1xx.o
-    0x20000f00   0x00000400   Zero   RW            1    STACK               startup_nuc1xx.o
+    0x2000001c   0x000002b0   Data   RW          120    .data               mainsource0728ver2.o
+    0x200002cc   0x000005f0   Data   RW          469    .data               ascii_table.o
+    0x200008bc   0x0000000c   Data   RW          514    .data               drvadc.o
+    0x200008c8   0x00000010   Data   RW          752    .data               drvgpio.o
+    0x200008d8   0x00000008   Data   RW         1312    .data               drvsys.o
+    0x200008e0   0x00000068   Data   RW         1614    .data               drvtimer.o
+    0x20000948   0x000004a0   Zero   RW          118    .bss                mainsource0728ver2.o
+    0x20000de8   0x0000000c   Zero   RW          513    .bss                drvadc.o
+    0x20000df4   0x00000050   Zero   RW         1003    .bss                drvspi.o
+    0x20000e44   0x00000050   Zero   RW         1612    .bss                drvtimer.o
+    0x20000e94   0x00000060   Zero   RW         1955    .bss                c_p.l(libspace.o)
+    0x20000ef4   0x00000004   PAD
+    0x20000ef8   0x00000000   Zero   RW            2    HEAP                startup_nuc1xx.o
+    0x20000ef8   0x00000400   Zero   RW            1    STACK               startup_nuc1xx.o
 
 
 ==============================================================================
@@ -1753,12 +1753,12 @@ Image component sizes
        400         32          0          0         80       4780   drvspi.o
        680         86         16          8          0       8149   drvsys.o
       2434        280         16        104         80      13260   drvtimer.o
-     14786       1450          4        696       1184     157793   mainsource0728ver2.o
+     14730       1444          4        688       1184     157781   mainsource0728ver2.o
        100         46        192          0       1024        652   startup_nuc1xx.o
        162         30          0         28          0     119294   system_nuc1xx.o
 
     ----------------------------------------------------------------------
-     21438       2128        260       2384       2380     334347   Object Totals
+     21382       2122        260       2376       2380     334335   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          0          0          0          0   (incl. Padding)
 
@@ -1826,15 +1826,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     24832       2240        408       2384       2480     330927   Grand Totals
-     24832       2240        408       2384       2480     330927   ELF Image Totals
-     24832       2240        408       2384          0          0   ROM Totals
+     24776       2234        408       2376       2480     330915   Grand Totals
+     24776       2234        408       2376       2480     330915   ELF Image Totals
+     24776       2234        408       2376          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                25240 (  24.65kB)
-    Total RW  Size (RW Data + ZI Data)              4864 (   4.75kB)
-    Total ROM Size (Code + RO Data + RW Data)      27624 (  26.98kB)
+    Total RO  Size (Code + RO Data)                25184 (  24.59kB)
+    Total RW  Size (RW Data + ZI Data)              4856 (   4.74kB)
+    Total ROM Size (Code + RO Data + RW Data)      27560 (  26.91kB)
 
 ==============================================================================
 
