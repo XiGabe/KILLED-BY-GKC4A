@@ -30,6 +30,7 @@ char Show_ADC5[4];
 char Show_ADC6[4];
 unsigned char phase=0;
 unsigned int PLL_flag=0;			
+char PLL_flag_str[5];
 
 void itoa(int i, unsigned char* istr) //将整数转换为字符串（ASCII格式）
 {
@@ -79,16 +80,16 @@ void Timer0_Callback (void) // Timer0 定时器中断的回调函数，在 Timer
             ADC5_value=DrvADC_GetConversionData(5);//
             ADC6_value=DrvADC_GetConversionData(6);//存储了两个ADC通道的读数
             DrvADC_StopConvert();
-            //VREF=3.271V
-            ADC5_value=((ADC5_value)/4096.0)*3297;
-            ADC6_value=((ADC6_value)/4096.0)*3297;
+            //VREF=3.317V
+            ADC5_value=((ADC5_value)/4096.0)*3317;
+            ADC6_value=((ADC6_value)/4096.0)*3317;
 							
             if(mode==3)   //锁相环处理
             {
                 if(PLL_flag==0) //标志来确定是否需要调整锁相环
                 {
                     if
-                    (((ADC5_value>1970)&&(ADC6_value>1970))||((ADC5_value<1970)&&(ADC6_value<1970)))
+                    (((ADC5_value>1350)&&(ADC6_value>1350))||((ADC5_value<1350)&&(ADC6_value<1350))) //控制同相和正交
                     {
                         if (phase==0) phase=32;
                         phase--;
@@ -102,7 +103,7 @@ void Timer0_Callback (void) // Timer0 定时器中断的回调函数，在 Timer
                 }
 								
 								/////////////mode=3 锁相环稳定判断/////////////////////////////
-                if (((abs(ADC5_value-1970)<250)&&(abs(ADC6_value-1970)<250))) /*||((abs(ADC5_value-2700)<200)&&(abs(ADC6_value-2700)<200))*/
+                if (((abs(ADC5_value-1650)<150)&&(abs(ADC6_value-1450)<150))||((abs(ADC5_value-750)<200)&&(abs(ADC6_value-1600)<200))) //locked/
                 {
 										act[7]->str[3]="LOCKED ";
                     PLL_flag=1;
@@ -169,10 +170,10 @@ int main(void)
       {
            sprintf(Show_ADC5,"%04d",ADC5_value);
            sprintf(Show_ADC6,"%04d",ADC6_value);
-           act[7]->str[8]=(unsigned char *)Show_ADC5;
-           act[7]->str[9]=(unsigned char *)Show_ADC6;
-           print_lcd(act[7]->x[8],act[7]->y[8],act[7]->str[8],act[7]->inverse[8]);
-           print_lcd(act[7]->x[9],act[7]->y[9],act[7]->str[9],act[7]->inverse[9]);
+           act[7]->str[4]=(unsigned char *)Show_ADC5;
+           act[7]->str[5]=(unsigned char *)Show_ADC6;
+           print_lcd(act[7]->x[4],act[7]->y[4],act[7]->str[4],act[7]->inverse[4]);
+           print_lcd(act[7]->x[5],act[7]->y[5],act[7]->str[5],act[7]->inverse[5]);
            print_lcd(act[7]->x[3],act[7]->y[3],act[7]->str[3],act[7]->inverse[3]);
       }
       else if (mode==2)

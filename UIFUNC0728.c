@@ -45,7 +45,7 @@ unsigned char a4_s0[]="90 PHASE SIGNAL",a4_s1[]="FREQ",a4_s2[]="KHz",a4_s3[]="PH
 unsigned char *a4_s9;//PHASE
 unsigned char a5_s0[]="90 PHASE SIGNAL",a5_s1[]="FREQ",a5_s2[]="KHz",a5_s3[]="PHASE",a5_s4[]="RUNING",a5_s5[]="BACK",a5_s6[]="1",a5_s7[]="0",a5_s8[]="0",a5_s9[]="191.25¡ã";
 unsigned char a6_s0[]="DUO INDEP SIGNAL",a6_s1[]="FREQ1",a6_s2[]="KHz",a6_s3[]="FREQ2",a6_s4[]="KHz",a6_s5[]="RUNING",a6_s6[]="BACK",a6_s7[]="1",a6_s8[]="0",a6_s9[]="0",a6_s10[]="1",a6_s11[]="0",a6_s12[]="0";
-unsigned char a7_s0[]="COSTAS",a7_s1[]="RUNNING",a7_s2[]="BACK",a7_s3[]="LOCKED";
+unsigned char a7_s0[]="COSTAS",a7_s1[]="RUNNING",a7_s2[]="BACK",a7_s3[]="LOCKED",a7_s4[],a7_s5[];
 unsigned int ui_state=0;  //×´Ì¬ºÅ
 
 unsigned int key_ENTER_state=0;
@@ -348,11 +348,13 @@ void init_act(void)
 	a6.str[12]=a6_s12;	a6.x[12]=2;	a6.y[12]=9;	a6.inverse[12]=0;
 	act[6]=&a6;
 	
-	a7.num=4;	
+	a7.num=5;	
 	a7.str[0]=a7_s0;	a7.x[0]=1;	a7.y[0]=0;	a7.inverse[0]=0;
 	a7.str[1]=a7_s1;	a7.x[1]=3;	a7.y[1]=0;	a7.inverse[1]=0;	
-	a7.str[2]=a7_s2;	a7.x[2]=3;	a7.y[2]=4;	a7.inverse[2]=0;
-	a7.str[3]=a7_s3;	a7.x[3]=2;	a7.y[2]=10;	a7.inverse[3]=0;
+	a7.str[2]=a7_s2;	a7.x[2]=3;	a7.y[2]=11;	a7.inverse[2]=0;
+	a7.str[3]=a7_s3;	a7.x[3]=2;	a7.y[3]=0;	a7.inverse[3]=0;
+	a7.str[4]=a7_s4;	a7.x[4]=0;	a7.y[4]=0;	a7.inverse[4]=0;
+	a7.str[5]=a7_s5;	a7.x[5]=0;	a7.y[5]=4;	a7.inverse[5]=0;
 	act[7]=&a7;
 	
 	display_ui_act(0);
