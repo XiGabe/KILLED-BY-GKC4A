@@ -176,15 +176,15 @@ int main(void)
            print_lcd(act[7]->x[5],act[7]->y[5],act[7]->str[5],act[7]->inverse[5]);
            print_lcd(act[7]->x[3],act[7]->y[3],act[7]->str[3],act[7]->inverse[3]);
       }
-      else if (mode==2)
+      /*else if (mode==2)
       {
-           sprintf(Show_ADC5,"%04d",ADC5_value);
-           sprintf(Show_ADC6,"%04d",ADC6_value);
-           act[5]->str[4]=(unsigned char *)Show_ADC5;
-           act[5]->str[10]=(unsigned char *)Show_ADC6;
-           print_lcd(act[5]->x[4],act[5]->y[4],act[5]->str[4],act[5]->inverse[4]);
-           print_lcd(act[5]->x[10],act[5]->y[10],act[5]->str[10],act[5]->inverse[10]);
-      }
+           //sprintf(Show_ADC5,"%04d",ADC5_value);
+           //sprintf(Show_ADC6,"%04d",ADC6_value);
+           //act[5]->str[4]=(unsigned char *)Show_ADC5;
+           //act[5]->str[10]=(unsigned char *)Show_ADC6;
+           //print_lcd(act[5]->x[4],act[5]->y[4],act[5]->str[4],act[5]->inverse[4]);
+           //print_lcd(act[5]->x[10],act[5]->y[10],act[5]->str[10],act[5]->inverse[10]);
+      }*/
 			if(led==0)
 			{
 				C12LED_L;

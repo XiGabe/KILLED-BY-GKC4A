@@ -37,15 +37,15 @@ struct struct_act
 
 
 struct struct_act *act[8];
-unsigned char a0_s0[]="2024GKC-COSTAS", a0_s1[]="WELCOME", a0_s2[]="PRESS ANY KEY";
-unsigned char a1_s0[]="CHOOSE OP MODE",a1_s1[]="DUO INDEP SIGNAL",a1_s2[]="90¡ãPHASE SIGNAL",a1_s3[]="COSTAS EXTRACT";
+unsigned char a0_s0[]="2024GKC-COSTAS", a0_s1[]="WELCOME", a0_s2[]="PRESS ANY KEY",a0_s3[]="CHX YJQ WQH";
+unsigned char a1_s0[]="CHOOSE OP MODE:",a1_s1[]="DUO INDEP SIGNAL",a1_s2[]="90 PHASE SIGNAL",a1_s3[]="COSTAS EXTRACT";
 unsigned char a2_s0[]="DUO INDEP SIGNAL",a2_s1[]="FREQ1",a2_s2[]="KHz",a2_s3[]="FREQ2",a2_s4[]="KHz",a2_s5[]="RUN",a2_s6[]="BACK",a2_s7[]="1",a2_s8[]="0",a2_s9[]="0",a2_s10[]="1",a2_s11[]="0",a2_s12[]="0";
 unsigned char a3_s0[]="COSTAS EXTRACT",a3_s1[]="RUN",a3_s2[]="BACK";
 unsigned char a4_s0[]="90 PHASE SIGNAL",a4_s1[]="FREQ",a4_s2[]="KHz",a4_s3[]="PHASE",a4_s4[]="RUN",a4_s5[]="BACK",a4_s6[]="1",a4_s7[]="0",a4_s8[]="0";
 unsigned char *a4_s9;//PHASE
 unsigned char a5_s0[]="90 PHASE SIGNAL",a5_s1[]="FREQ",a5_s2[]="KHz",a5_s3[]="PHASE",a5_s4[]="RUNING",a5_s5[]="BACK",a5_s6[]="1",a5_s7[]="0",a5_s8[]="0",a5_s9[]="191.25¡ã";
 unsigned char a6_s0[]="DUO INDEP SIGNAL",a6_s1[]="FREQ1",a6_s2[]="KHz",a6_s3[]="FREQ2",a6_s4[]="KHz",a6_s5[]="RUNING",a6_s6[]="BACK",a6_s7[]="1",a6_s8[]="0",a6_s9[]="0",a6_s10[]="1",a6_s11[]="0",a6_s12[]="0";
-unsigned char a7_s0[]="COSTAS",a7_s1[]="RUNNING",a7_s2[]="BACK",a7_s3[]="LOCKED",a7_s4[],a7_s5[];
+unsigned char a7_s0[]="COSTAS EXTRACT:",a7_s1[]="RUNNING",a7_s2[]="BACK",a7_s3[]="LOCKED",a7_s4[],a7_s5[];
 unsigned int ui_state=0;  //×´Ì¬ºÅ
 
 unsigned int key_ENTER_state=0;
@@ -271,10 +271,11 @@ void init_act(void)
 {
 	itoafreq(mode2_freq, a4_s6,a4_s7,a4_s8);
 	itodegree(mode2_phasediff,&a4_s9); 
-	a0.num=3;
+	a0.num=4;
 	a0.str[0]=a0_s0; a0.x[0]=0;  a0.y[0]=0;  a0.inverse[0]=0; 
 	a0.str[1]=a0_s1; a0.x[1]=1;  a0.y[1]=0;  a0.inverse[1]=0;
 	a0.str[2]=a0_s2; a0.x[2]=2;  a0.y[2]=0;  a0.inverse[2]=0;						  ///////act0
+	a0.str[3]=a0_s3; a0.x[3]=3;  a0.y[3]=0;  a0.inverse[3]=0;	
 	act[0]=&a0;
 
 	a1.num=4;
