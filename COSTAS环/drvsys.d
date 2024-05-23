@@ -1,0 +1,9 @@
+drvsys.o: ..\..\..\Src\Driver\DrvSYS.c
+drvsys.o: C:\Nuvoton\Keil\ARM\RV31\Inc\stdio.h
+drvsys.o: ..\..\..\Include\Driver\DrvSYS.h
+drvsys.o: ..\..\..\..\CMSIS\CM0\DeviceSupport\Nuvoton\NUC1xx\NUC1xx.h
+drvsys.o: ..\..\..\..\CMSIS\CM0\CoreSupport\core_cm0.h
+drvsys.o: C:\Nuvoton\Keil\ARM\RV31\Inc\stdint.h
+drvsys.o: ..\..\..\..\CMSIS\CM0\DeviceSupport\Nuvoton\NUC1xx\system_NUC1xx.h
+drvsys.o: ..\..\..\Include\System\SysInfra.h
+drvsys.o: ..\..\..\Include\System\ModuleID.h

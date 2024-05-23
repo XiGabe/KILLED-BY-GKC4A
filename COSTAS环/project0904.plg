@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Nuvoton\BSP Library\NUC100SeriesBSP_CMSIS_v1.05.003\NuvotonPlatform_Keil\Sample\NUC1xx-LB_002\KILLED-BY-GKC4A\project0904.uvproj
+Project File Date:  04/02/2024
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling mainsource0728ver2.c...
+linking...
+project0904.axf: Warning: L6340W: options first and last are ignored for link type of scattered
+Program Size: Code=24784 RO-data=408 RW-data=2408 ZI-data=2480  
+"project0904.axf" - 0 Error(s), 1 Warning(s).
+Load "C:\\Nuvoton\\BSP Library\\NUC100SeriesBSP_CMSIS_v1.05.003\\NuvotonPlatform_Keil\\Sample\\NUC1xx-LB_002\\KILLED-BY-GKC4A\\project0904.AXF" 
+Build target 'Target 1'
+compiling mainsource0728ver2.c...
+linking...
+project0904.axf: Warning: L6340W: options first and last are ignored for link type of scattered
+Program Size: Code=24780 RO-data=408 RW-data=2408 ZI-data=2480  
+"project0904.axf" - 0 Error(s), 1 Warning(s).
+Load "C:\\Nuvoton\\BSP Library\\NUC100SeriesBSP_CMSIS_v1.05.003\\NuvotonPlatform_Keil\\Sample\\NUC1xx-LB_002\\KILLED-BY-GKC4A\\project0904.AXF" 
+Build target 'Target 1'
+compiling mainsource0728ver2.c...
+linking...
+project0904.axf: Warning: L6340W: options first and last are ignored for link type of scattered
+Program Size: Code=24784 RO-data=408 RW-data=2408 ZI-data=2480  
+"project0904.axf" - 0 Error(s), 1 Warning(s).
+Load "C:\\Nuvoton\\BSP Library\\NUC100SeriesBSP_CMSIS_v1.05.003\\NuvotonPlatform_Keil\\Sample\\NUC1xx-LB_002\\KILLED-BY-GKC4A\\project0904.AXF" 
+Build target 'Target 1'
+compiling mainsource0728ver2.c...
+linking...
+project0904.axf: Warning: L6340W: options first and last are ignored for link type of scattered
+Program Size: Code=24780 RO-data=408 RW-data=2408 ZI-data=2480  
+"project0904.axf" - 0 Error(s), 1 Warning(s).
+Load "C:\\Nuvoton\\BSP Library\\NUC100SeriesBSP_CMSIS_v1.05.003\\NuvotonPlatform_Keil\\Sample\\NUC1xx-LB_002\\KILLED-BY-GKC4A\\project0904.AXF" 
+Build target 'Target 1'
+compiling mainsource0728ver2.c...
+linking...
+project0904.axf: Warning: L6340W: options first and last are ignored for link type of scattered
+Program Size: Code=24780 RO-data=408 RW-data=2408 ZI-data=2480  
+"project0904.axf" - 0 Error(s), 1 Warning(s).
+Load "C:\\Nuvoton\\BSP Library\\NUC100SeriesBSP_CMSIS_v1.05.003\\NuvotonPlatform_Keil\\Sample\\NUC1xx-LB_002\\KILLED-BY-GKC4A\\project0904.AXF" 
+Build target 'Target 1'
+compiling mainsource0728ver2.c...
+linking...
+project0904.axf: Warning: L6340W: options first and last are ignored for link type of scattered
+Program Size: Code=24784 RO-data=408 RW-data=2408 ZI-data=2480  
+"project0904.axf" - 0 Error(s), 1 Warning(s).
+Load "C:\\Nuvoton\\BSP Library\\NUC100SeriesBSP_CMSIS_v1.05.003\\NuvotonPlatform_Keil\\Sample\\NUC1xx-LB_002\\KILLED-BY-GKC4A\\project0904.AXF" 

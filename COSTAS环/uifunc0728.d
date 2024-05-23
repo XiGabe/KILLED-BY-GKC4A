@@ -1,0 +1,10 @@
+uifunc0728.o: UIFUNC0728.c
+uifunc0728.o: C:\Nuvoton\Keil\ARM\RV31\Inc\stdio.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\RV31\Inc\stdlib.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\RV31\Inc\string.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\Inc\Nuvoton\NUC1xx\NUC1xx.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\CMSIS\Include\core_cm0.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\RV31\Inc\stdint.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\CMSIS\Include\core_cmInstr.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\CMSIS\Include\core_cmFunc.h
+uifunc0728.o: C:\Nuvoton\Keil\ARM\Inc\Nuvoton\NUC1xx\system_NUC1xx.h

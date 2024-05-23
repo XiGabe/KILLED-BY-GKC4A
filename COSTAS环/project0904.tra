@@ -1,0 +1,28 @@
+*** Creating Trace Output File 'project0904.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"startup_nuc1xx.o"'
+### List of Objects: adding '"core_cm0.o"'
+### List of Objects: adding '"system_nuc1xx.o"'
+### List of Objects: adding '"mainsource0728ver2.o"'
+### List of Objects: adding '"ascii_table.o"'
+### List of Objects: adding '"drvadc.o"'
+### List of Objects: adding '"drvgpio.o"'
+### List of Objects: adding '"drvspi.o"'
+### List of Objects: adding '"drvsys.o"'
+### List of Objects: adding '"drvtimer.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M0 "startup_nuc1xx.o" "core_cm0.o" "system_nuc1xx.o" "mainsource0728ver2.o" "ascii_table.o" "drvadc.o" "drvgpio.o" "drvspi.o" "drvsys.o" "drvtimer.o" --strict --scatter "project0904.sct" 
+--map --first='startup_NUC1xx.o(RESET)' --datacompressor=off --info=inline --entry Reset_Handler --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\project0904.map" -o "project0904.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'project0904.axf'
+### ADS-LD Command File: 'project0904.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'project0904.lnp', Handle=0x000007C4
+### Writing '.lnp' file
+### ADS-LD Command file 'project0904.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
